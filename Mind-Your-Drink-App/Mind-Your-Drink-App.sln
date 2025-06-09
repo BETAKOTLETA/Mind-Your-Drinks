@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mind-Your-Drink-App", "Mind-Your-Drink-App.csproj", "{9B11A19F-F696-45B6-96F7-43BDA979DE1C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mind-Your-Drink-Server", "..\Mind-Your-Drink-Server\Mind-Your-Drink-Server.csproj", "{2915E6C8-6C47-4AD8-A91B-8DEEBB1FDC57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mind-Your-Drink-Models", "..\Mind-Your-Drink-Models\Mind-Your-Drink-Models.csproj", "{F0AB532D-A871-4EA7-935A-F7BA15D354A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{2915E6C8-6C47-4AD8-A91B-8DEEBB1FDC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2915E6C8-6C47-4AD8-A91B-8DEEBB1FDC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2915E6C8-6C47-4AD8-A91B-8DEEBB1FDC57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0AB532D-A871-4EA7-935A-F7BA15D354A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0AB532D-A871-4EA7-935A-F7BA15D354A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0AB532D-A871-4EA7-935A-F7BA15D354A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0AB532D-A871-4EA7-935A-F7BA15D354A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
