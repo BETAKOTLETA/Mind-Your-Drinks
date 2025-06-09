@@ -1,0 +1,6 @@
+@Mind_Your_Drink_Server_HostAddress = http://localhost:5161
+
+GET {{Mind_Your_Drink_Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
