@@ -1,5 +1,4 @@
 ﻿using Mind_Your_Drink_Server.Data.Repositories;
-using Mind_Your_Drink_Server.Models;
 
 namespace Mind_Your_Drink_Server.Data
 {

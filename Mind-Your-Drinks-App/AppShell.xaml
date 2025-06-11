@@ -4,12 +4,23 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Mind_Your_Drinks_App"
-    Shell.FlyoutBehavior="Flyout"
-    Title="Mind_Your_Drinks_App">
+    xmlns:views="clr-namespace:Mind_Your_Drinks_App.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Mind Your Drinks App">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <!-- Bottom Tab Bar -->
+    <TabBar>
+        <Tab Title="Today" >
+            <ShellContent Route="today" ContentTemplate="{DataTemplate local:Today}" />
+        </Tab>
+        <Tab Title="Settings">
+            <ShellContent Route="settings" ContentTemplate="{DataTemplate local:Settings}" />
+        </Tab>
+    </TabBar>
 
+    <!-- Login Page (not in tab bar) -->
+    <ShellContent 
+        Route="login" 
+        ContentTemplate="{DataTemplate views:Login}" 
+        Shell.NavBarIsVisible="False"/>
 </Shell>
