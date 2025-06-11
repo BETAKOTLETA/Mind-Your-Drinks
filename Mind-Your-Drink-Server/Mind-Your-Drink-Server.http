@@ -3,4 +3,32 @@
 GET {{Mind_Your_Drink_Server_HostAddress}}/weatherforecast/
 Accept: application/json
 
-###
+### Create
+POST {{Mind_Your_Drink_Server_HostAddress}}/User/CreateAccount
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "1",
+  "Password": "2"
+}
+
+### Login Correct 1:2
+POST {{Mind_Your_Drink_Server_HostAddress}}/User/Login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "1",
+  "Password": "2"
+}
+
+### Login InCorrect 1:2
+POST {{Mind_Your_Drink_Server_HostAddress}}/User/Login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "1",
+  "Password": "3"
+}

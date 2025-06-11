@@ -1,0 +1,34 @@
+﻿using Mind_Your_Drink_Server.Data.Repositories;
+using Mind_Your_Drink_Server.Models;
+
+namespace Mind_Your_Drink_Server.Data
+{
+    public class UnitOfWork : IUnitOfWork
+    {
+        private readonly MindDrinkDBContext _context;
+
+        public UnitOfWork(MindDrinkDBContext context)
+        {
+            _context = context;
+            Users = new UserRepository(_context);
+        }
+
+        public IUserRepository Users { get; private set; }
+
+        public int Complete()
+        {
+            return _context.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
+
+        public async Task<int> CompleteAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
+
+    }
+}
