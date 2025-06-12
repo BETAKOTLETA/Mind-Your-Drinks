@@ -50,11 +50,15 @@ namespace Mind_Your_Drink_Server.Controllers
                 
             User User = await _unitOfWork.Users.GetByName(request.Name);
 
+            if (User.StateName == "Banned")
+                return BadRequest("You are Banned GG");
+
             if(User.HashPassword != request.Password.ToHashPassword())
                 return Unauthorized("Password is not correct");
 
             return Ok("Login");
         }
-
+            
+        
     }
 }

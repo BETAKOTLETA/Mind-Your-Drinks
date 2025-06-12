@@ -10,9 +10,11 @@ namespace Mind_Your_Drink_Server.Data
         {
             _context = context;
             Users = new UserRepository(_context);
+            Admins = new AdminRepository(_context);
         }
 
         public IUserRepository Users { get; private set; }
+        public IAdminRepository Admins { get; private set; }
 
         public int Complete()
         {
