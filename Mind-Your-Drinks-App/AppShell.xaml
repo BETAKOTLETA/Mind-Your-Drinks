@@ -6,12 +6,26 @@
     xmlns:local="clr-namespace:Mind_Your_Drinks_App"
     xmlns:views="clr-namespace:Mind_Your_Drinks_App.Views"
     Shell.FlyoutBehavior="Disabled"
-    Title="Mind Your Drinks App">
+    Title="Mind Your Drinks App"
+    Shell.TabBarBackgroundColor="#2E3440"
+    Shell.TabBarForegroundColor="AntiqueWhite"
+    Shell.TabBarTitleColor="CadetBlue"
+    Shell.TabBarUnselectedColor="AntiqueWhite"
+    BackgroundColor="#2E3440"
+    TitleColor="AntiqueWhite"
+    >
 
     <!-- Bottom Tab Bar -->
-    <TabBar>
-        <Tab Title="Today" >
+    <TabBar >
+       
+        <Tab Title="Today">
             <ShellContent Route="today" ContentTemplate="{DataTemplate local:Today}" />
+        </Tab>
+        <Tab Title="Calendar" >
+            <ShellContent Route="calendar" ContentTemplate="{DataTemplate local:Calendar}" />
+        </Tab>
+        <Tab Title="Statistics" >
+            <ShellContent Route="statistics" ContentTemplate="{DataTemplate local:Statistics}" />
         </Tab>
         <Tab Title="Settings">
             <ShellContent Route="settings" ContentTemplate="{DataTemplate local:Settings}" />

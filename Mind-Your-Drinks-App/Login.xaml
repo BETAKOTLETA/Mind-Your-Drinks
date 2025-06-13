@@ -2,27 +2,35 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mind_Your_Drinks_App.Views.Login"
-             Title="Login">
+             Title="Login"
+             BackgroundColor="#B3D9FF">
 
     <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
 
         <Label Text="Please Log In"
                FontSize="28"
-               HorizontalOptions="Center" />
+               HorizontalOptions="Center" 
+               TextColor="AntiqueWhite"/>
 
         <Entry x:Name="UsernameEntry"
                Placeholder="Username"
-               Keyboard="Default" />
+               PlaceholderColor="AntiqueWhite"
+               FontSize="20"
+               Keyboard="Default" 
+               TextColor="AntiqueWhite"/>
 
         <Entry x:Name="PasswordEntry"
                Placeholder="Password"
+               PlaceholderColor="AntiqueWhite"
+               FontSize="20"
                IsPassword="True"
-               Keyboard="Default" />
+               Keyboard="Default" 
+               TextColor="AntiqueWhite"/>
 
         <Button Text="Log In"
                 Clicked="OnLoginClicked"
-                BackgroundColor="#2196F3"
-                TextColor="White" />
+                BackgroundColor="#2E3440"
+                TextColor="AntiqueWhite" />
 
     </VerticalStackLayout>
 
