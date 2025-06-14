@@ -2,13 +2,13 @@
 
 namespace Mind_Your_Drink_Server.Data.Repositories
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserDrinksRepository : IRepository<UserDrink>
     {
-        Task<User> GetByName(string name);
+        Task<UserDrink> GetByUserName(string name);
 
         Task<bool> IsExist(string name);
 
-
         
+
     }
 }

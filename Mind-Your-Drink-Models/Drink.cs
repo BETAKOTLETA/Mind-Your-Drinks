@@ -22,7 +22,7 @@
 
         public DrinkType Type { get; set; }
 
-        public int PercentageOfAlcohol { get; set; }
+        public int ABV { get; set; }
 
         public double Callories { get; set; }
     }
@@ -34,8 +34,12 @@
     }
     //Эта модель должна создаваться при "сборке" ингридиента
     public class UserDrink : Drink, IUserDrink {
+
+        public int Id { get; set; }
+        public int UserId { get; set; }
         public double Price { get; set; }
         public int VolumeInMl { get; set; }
+        public DateTime Time { get; set; }
     }
 
     //Mb later I will create a State for types of alchol
@@ -49,7 +53,7 @@
         Rum,
         Brandy,
         Gin,
-        Liquire,
+        Liquor,
         Beverage,
         Other
     } 

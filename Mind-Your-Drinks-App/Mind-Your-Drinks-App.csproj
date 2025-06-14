@@ -65,6 +65,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Mind-Your-Drink-Models\Mind-Your-Drink-Models.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Today.xaml.cs">
 	    <DependentUpon>Today.xaml</DependentUpon>
 	  </Compile>

@@ -80,4 +80,23 @@ Get {{Mind_Your_Drink_Server_HostAddress}}/Test/ping
 Content-Type: application/json
 Accept: application/json
 
- 
+### User Drink Test
+ POST {{Mind_Your_Drink_Server_LocalAddress}}/UserDrink/CreateUserDrink
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "vik",
+  "hash": "3bc508d48b0c83ec09d4230985d0b36d432dd3cc432b1192ffb9b9d0b6759418",
+  "userDrink": {
+    "id": 0,
+    "userId": 0,
+    "name": "Whiskey",
+    "type": 1,
+    "abv": 40,
+    "callories": 250,
+    "price": 5.99,
+    "volumeInMl": 50,
+    "time": "2025-06-14T08:00:00Z"
+  }
+}

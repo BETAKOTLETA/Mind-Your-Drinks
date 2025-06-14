@@ -13,6 +13,7 @@ namespace Mind_Your_Drink_Server.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<UserDrink> UserDrinks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
