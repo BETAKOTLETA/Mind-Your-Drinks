@@ -100,3 +100,12 @@ Accept: application/json
     "time": "2025-06-14T08:00:00Z"
   }
 }
+
+### GetAllDrinks Test
+ POST {{Mind_Your_Drink_Server_LocalAddress}}/UserDrink/GetAllDrinks
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "k"
+}
