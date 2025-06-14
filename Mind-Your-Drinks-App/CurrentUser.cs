@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Mind_Your_Drinks_App
 {
-    public class CurrentUser : User
+    public static class GlobalState
     {
-
+        public static User CurrentUser { get; set; }
     }
 }

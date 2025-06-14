@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Mind_Your_Drink_Server.Models;
 
 namespace Mind_Your_Drinks_App
 {
@@ -14,9 +15,8 @@ namespace Mind_Your_Drinks_App
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

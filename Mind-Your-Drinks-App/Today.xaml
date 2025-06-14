@@ -55,38 +55,55 @@
             </CollectionView>
 
             <!-- Input Form (Visible when editing drink) -->
-            <VerticalStackLayout IsVisible="{Binding IsAddDrinkFormVisible}"
-                                 Padding="15"
-                                 BackgroundColor="#f0f0f0"
-                                 Spacing="10">
+<VerticalStackLayout IsVisible="{Binding IsAddDrinkFormVisible}"
+                     Padding="15"
+                     BackgroundColor="#f0f0f0"
+                     Spacing="10">
 
-                <Label Text="Enter Drink Details"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center" />
+    <Label Text="Enter Drink Details"
+           FontAttributes="Bold"
+           HorizontalOptions="Center" />
 
-                <Grid ColumnDefinitions="Auto,*" 
-                      RowDefinitions="Auto,Auto" 
-                      ColumnSpacing="10" 
-                      RowSpacing="10">
-                    <Label Grid.Row="0" Grid.Column="0" 
-                           Text="Amount (ml):" 
-                           VerticalOptions="Center"/>
-                    <Entry Grid.Row="0" Grid.Column="1" 
-                           Keyboard="Numeric"
-                           Text="{Binding SelectedDrink.Amount}" />
+    <Grid ColumnDefinitions="Auto,*" 
+          RowDefinitions="Auto,Auto,Auto,Auto" 
+          ColumnSpacing="10" 
+          RowSpacing="10">
 
-                    <Label Grid.Row="1" Grid.Column="0" 
-                           Text="Details:" 
-                           VerticalOptions="Center"/>
-                    <Entry Grid.Row="1" Grid.Column="1" 
-                           Text="{Binding SelectedDrink.Details}" />
-                </Grid>
+        <Label Grid.Row="0" Grid.Column="0" 
+               Text="Amount (ml):" 
+               VerticalOptions="Center"/>
+        <Entry Grid.Row="0" Grid.Column="1" 
+               Keyboard="Numeric"
+               Text="{Binding SelectedDrink.VolumeInMl}" />
+
+        <Label Grid.Row="1" Grid.Column="0" 
+               Text="ABV:" 
+               VerticalOptions="Center"/>
+        <Entry Grid.Row="1" Grid.Column="1" 
+               Keyboard="Numeric"
+               Text="{Binding SelectedDrink.ABV}" />
+
+        <Label Grid.Row="2" Grid.Column="0" 
+               Text="Price:" 
+               VerticalOptions="Center"/>
+        <Entry Grid.Row="2" Grid.Column="1" 
+               Keyboard="Numeric"
+               Text="{Binding SelectedDrink.Price}" />
+
+        <Label Grid.Row="3" Grid.Column="0" 
+               Text="Calories:" 
+               VerticalOptions="Center"/>
+        <Entry Grid.Row="3" Grid.Column="1" 
+               Keyboard="Numeric"
+               Text="{Binding SelectedDrink.Callories}" />
+
+    </Grid>
 
                 <Button Text="Save Drink"
                         BackgroundColor="#4CAF50"
                         TextColor="White"
                         Command="{Binding SaveDrinkCommand}" 
-                        Margin="0,10,0,0"/>
+                        Margin="0,80,0,0"/>
             </VerticalStackLayout>
         </Grid>
 

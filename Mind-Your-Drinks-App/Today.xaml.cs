@@ -12,7 +12,7 @@ public partial class Today : ContentPage
     }
     private void OnDrinkSelected(object sender, EventArgs e)
     {
-        if (sender is Button button && button.BindingContext is Drink drink)
+        if (sender is Button button && button.BindingContext is UserDrink drink)
         {
             var vm = (TodayViewModel)BindingContext;
             vm.SelectedDrink = drink;

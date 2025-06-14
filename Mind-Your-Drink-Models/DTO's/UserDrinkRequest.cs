@@ -1,6 +1,4 @@
-﻿using Mind_Your_Drink_Server.Migrations;
-
-namespace Mind_Your_Drink_Server.DTO_s
+﻿namespace Mind_Your_Drink_Server.DTO_s
 {
     public class UserDrinkRequest
     {
