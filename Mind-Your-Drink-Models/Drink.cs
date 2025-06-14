@@ -22,7 +22,7 @@
 
         public DrinkType Type { get; set; }
 
-        public int PercentageOfAlcohol { get; set; }
+        public int ABV { get; set; }
 
         public double Callories { get; set; }
     }
