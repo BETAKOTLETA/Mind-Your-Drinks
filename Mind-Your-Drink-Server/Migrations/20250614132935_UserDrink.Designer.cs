@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mind_Your_Drink_Server.Data;
 
@@ -11,9 +12,11 @@ using Mind_Your_Drink_Server.Data;
 namespace Mind_Your_Drink_Server.Migrations
 {
     [DbContext(typeof(MindDrinkDBContext))]
-    partial class MindDrinkDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250614132935_UserDrink")]
+    partial class UserDrink
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

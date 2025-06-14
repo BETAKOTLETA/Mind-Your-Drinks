@@ -84,6 +84,8 @@ namespace Mind_Your_Drinks_App.ViewModels
             IsAddDrinkFormVisible = false;
             SelectedDrink = null;
             AddButtonText = "Add Drink";
+
+            
         }
 
         private void AddDefaultDrinks()
