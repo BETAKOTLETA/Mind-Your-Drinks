@@ -49,7 +49,7 @@
         Rum,
         Brandy,
         Gin,
-        Liquire,
+        Liquor,
         Beverage,
         Other
     } 
