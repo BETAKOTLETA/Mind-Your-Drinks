@@ -1,4 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
+
+using Mind_Your_Drink_Server.Models;
+using Syncfusion.Maui.Core.Hosting;
+using Syncfusion.Maui.Core.Hosting;
+
 using Mind_Your_Drink_Models.Models;
 using Mind_Your_Drinks_App.ViewModels;
 using Mind_Your_Drinks_App.Services;
@@ -12,6 +17,7 @@ namespace Mind_Your_Drinks_App
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
