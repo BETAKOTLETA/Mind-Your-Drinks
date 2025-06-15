@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Mind_Your_Drink_Server.Controllers
+namespace Mind_Your_Drink_Models.Controllers
 {
     [ApiController]
     [Route("[controller]")]

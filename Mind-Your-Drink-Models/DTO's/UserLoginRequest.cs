@@ -1,4 +1,4 @@
-﻿namespace Mind_Your_Drink_Server.DTO_s
+﻿namespace Mind_Your_Drink_Models.DTO_s
 {
     public class UserLoginRequest
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Mind_Your_Drink_Server.Models;
+using Mind_Your_Drink_Models.Models;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Mind_Your_Drink_Server.Data
+namespace Mind_Your_Drink_Models.Data
 {
     public class MindDrinkDBContext : DbContext
     {

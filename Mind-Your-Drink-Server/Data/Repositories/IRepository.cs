@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Mind_Your_Drink_Server.Data.Repositories
+namespace Mind_Your_Drink_Models.Data.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {

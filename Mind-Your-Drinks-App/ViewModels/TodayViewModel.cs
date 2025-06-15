@@ -1,5 +1,5 @@
-﻿using Mind_Your_Drink_Server.DTO_s;
-using Mind_Your_Drink_Server.Models;
+﻿using Mind_Your_Drink_Models.DTO_s;
+using Mind_Your_Drink_Models.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Net.Http.Headers;
@@ -12,22 +12,22 @@ namespace Mind_Your_Drinks_App.ViewModels
 {
     public class TodayViewModel : INotifyPropertyChanged
     {
-        // Constants
+
         private const string ApiBaseUrl = "https://mind-your-drink-server20250611231310-h8aqf9a8cccgczfm.canadacentral-01.azurewebsites.net";
         private const string AddDrinkEndpoint = "UserDrink/CreateUserDrink";
 
-        // Commands - initialized in constructor
+
         public ICommand ToggleAddDrinkCommand { get; }
         public ICommand DrinkSelectedCommand { get; }
         public ICommand SaveDrinkCommand { get; }
 
-        // Properties with backing fields
+
         private UserDrink? _selectedDrink;
         private bool _isDrinkGridVisible;
         private bool _isAddDrinkFormVisible;
         private string _addButtonText = "Add Drink";
 
-        // Public properties
+
         public ObservableCollection<Drink> Drinks { get; } = new();
         public User? CurrentUser { get; set; } // Should be set when user logs in
 
@@ -57,7 +57,7 @@ namespace Mind_Your_Drinks_App.ViewModels
 
         public TodayViewModel()
         {
-            // Initialize commands in constructor
+
             ToggleAddDrinkCommand = new RelayCommand(ToggleAddDrinkForm);
             DrinkSelectedCommand = new RelayCommand<Drink>(SelectDrink);
             SaveDrinkCommand = new RelayCommand(SaveSelectedDrink);
@@ -68,16 +68,23 @@ namespace Mind_Your_Drinks_App.ViewModels
         private void LoadDefaultDrinks()
         {
             Drinks.Add(new Drink { Type = DrinkType.Beer, Name = "Beer" });
+
             Drinks.Add(new Drink { Type = DrinkType.Wine, Name = "Wine" });
             Drinks.Add(new Drink { Type = DrinkType.Cider, Name = "Cider" });
+
+    
+            Drinks.Add(new Drink { Type = DrinkType.Beverage, Name = "Beverage" });
+
             Drinks.Add(new Drink { Type = DrinkType.Vodka, Name = "Vodka" });
             Drinks.Add(new Drink { Type = DrinkType.Tequila, Name = "Tequila" });
             Drinks.Add(new Drink { Type = DrinkType.Whiskey, Name = "Whiskey" });
             Drinks.Add(new Drink { Type = DrinkType.Rum, Name = "Rum" });
             Drinks.Add(new Drink { Type = DrinkType.Brandy, Name = "Brandy" });
             Drinks.Add(new Drink { Type = DrinkType.Gin, Name = "Gin" });
+
             Drinks.Add(new Drink { Type = DrinkType.Liqueur, Name = "Liqueur" });
             Drinks.Add(new Drink { Type = DrinkType.MixedDrink, Name = "Mixed Drink" });
+
             Drinks.Add(new Drink { Type = DrinkType.Other, Name = "Other" });
         }
 

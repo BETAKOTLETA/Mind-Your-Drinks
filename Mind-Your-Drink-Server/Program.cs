@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Mind_Your_Drink_Server.Data;
+using Mind_Your_Drink_Models.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

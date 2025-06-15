@@ -1,4 +1,4 @@
-namespace Mind_Your_Drink_Server
+namespace Mind_Your_Drink_Models
 {
     public class WeatherForecast
     {

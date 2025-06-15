@@ -7,8 +7,18 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "Name": "5",
-  "Password": "6"
+  "Name": ",",
+  "Password": ","
+}
+
+### Create 5, 6
+POST {{Mind_Your_Drink_Server_HostAddress}}/User/CreateAccount
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "b",
+  "Password": "b"
 }
 
 ### Create Admin 7, 8
@@ -17,8 +27,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "Name": "7",
-  "Password": "8"
+  "Name": "adminhka",
+  "Password": "admihnka"
 }
 
 ### Ban 
@@ -28,8 +38,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "ToBanName": "5",
-  "AdminPassword": "8"
+  "ToBanName": "7",
+  "AdminPassword": "757b7d716be2b8c25fb166ff696b4d3de46b463592d7f96405a320d10cfb5660"
 }
 
 
@@ -39,8 +49,18 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "Name": "5",
-  "Password": "6"
+  "Name": "adminka",
+  "Password": "adminka"
+}
+
+### Login Correct 1:2
+POST {{Mind_Your_Drink_Server_HostAddress}}/User/Login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "adminka",
+  "Password": "adminka"
 }
 
 ### Login InCorrect 1:2
@@ -107,5 +127,37 @@ Content-Type: application/json
 Accept: application/json
 
 {
+
   "name": "9"
+
+}
+
+### GetAllDrinks Test
+ POST {{Mind_Your_Drink_Server_HostAddress}}/UserDrink/GetAllDrinks
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "k"
+}
+
+### GetAllDrinks Test
+ POST {{Mind_Your_Drink_Server_LocalAddress}}/Admin/GetAllUserInfo
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "adminka",
+  "Password": "757b7d716be2b8c25fb166ff696b4d3de46b463592d7f96405a320d10cfb5660"
+}
+
+### GetAllDrinks Test
+ POST {{Mind_Your_Drink_Server_HostAddress}}/Admin/GetAllUserInfo
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "adminka",
+  "Password": "757b7d716be2b8c25fb166ff696b4d3de46b463592d7f96405a320d10cfb5660"
+
 }

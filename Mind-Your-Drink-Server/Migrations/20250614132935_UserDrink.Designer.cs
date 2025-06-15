@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Mind_Your_Drink_Server.Data;
+using Mind_Your_Drink_Models.Data;
 
 #nullable disable
 
-namespace Mind_Your_Drink_Server.Migrations
+namespace Mind_Your_Drink_Models.Migrations
 {
     [DbContext(typeof(MindDrinkDBContext))]
     [Migration("20250614132935_UserDrink")]

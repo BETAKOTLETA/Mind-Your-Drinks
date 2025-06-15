@@ -4,7 +4,7 @@ using Mind_Your_Drink_Models.Utilities;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mind_Your_Drink_Server.Models
+namespace Mind_Your_Drink_Models.Models
 {
     public class User
     {
@@ -21,17 +21,18 @@ namespace Mind_Your_Drink_Server.Models
 
         public string StateName { get; set; }
 
-        protected User()
-        {
-
-        }
-
-        protected User(string name, string hashPassword, IUserState userState)
+        public User(string name, string hashPassword, IUserState userState)
         {
             Name = name;
             HashPassword = hashPassword;
             StateName = userState.Name;
             _state = userState;
+        }
+
+        public User()
+        {
+            _state = new ActiveState(); // or null if necessary
+            StateName = _state.Name;
         }
 
         public static User CreateUser(string name, string password)
@@ -56,6 +57,7 @@ namespace Mind_Your_Drink_Server.Models
 
     public class Admin : User
     {
+
         protected Admin() : base() { }
 
         protected Admin(string name, string password, IUserState userState)
@@ -69,6 +71,11 @@ namespace Mind_Your_Drink_Server.Models
         public void Ban(User target)
         {
             target.StateAction(state => state.Ban());
+        }
+
+        public void UnBan(User target)
+        {
+            target.StateAction(state => state.UnBan());
         }
 
     }

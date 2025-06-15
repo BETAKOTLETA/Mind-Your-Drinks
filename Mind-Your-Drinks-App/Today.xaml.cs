@@ -1,4 +1,4 @@
-﻿using Mind_Your_Drink_Server.Models;
+﻿using Mind_Your_Drink_Models.Models;
 using Mind_Your_Drinks_App.ViewModels;
 
 namespace Mind_Your_Drinks_App;

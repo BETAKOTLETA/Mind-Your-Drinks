@@ -1,6 +1,6 @@
-﻿using Mind_Your_Drink_Server.Data.Repositories;
+﻿using Mind_Your_Drink_Models.Data.Repositories;
 
-namespace Mind_Your_Drink_Server.Data
+namespace Mind_Your_Drink_Models.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
