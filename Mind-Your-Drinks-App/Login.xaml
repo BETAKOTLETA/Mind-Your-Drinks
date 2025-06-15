@@ -32,6 +32,11 @@
                 BackgroundColor="#2E3440"
                 TextColor="AntiqueWhite" />
 
+        <Button Text="Sign Up"
+                Clicked="SignUpClicked"
+                BackgroundColor="#2E3440"
+                TextColor="AntiqueWhite" />
+
     </VerticalStackLayout>
 
 </ContentPage>

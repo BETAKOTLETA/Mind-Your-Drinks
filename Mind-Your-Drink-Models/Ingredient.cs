@@ -1,4 +1,4 @@
-﻿namespace Mind_Your_Drink_Server.Models
+﻿namespace Mind_Your_Drink_Models.Models
 {
     public class Ingredient
     {

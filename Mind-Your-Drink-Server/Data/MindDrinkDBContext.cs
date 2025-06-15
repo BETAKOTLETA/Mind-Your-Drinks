@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Mind_Your_Drink_Server.Models;
+using Mind_Your_Drink_Models.Models;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Mind_Your_Drink_Server.Data
+namespace Mind_Your_Drink_Models.Data
 {
     public class MindDrinkDBContext : DbContext
     {
@@ -13,6 +13,7 @@ namespace Mind_Your_Drink_Server.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<UserDrink> UserDrinks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

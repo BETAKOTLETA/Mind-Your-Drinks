@@ -1,6 +1,7 @@
-﻿using Mind_Your_Drink_Server.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Mind_Your_Drink_Models.Models;
 
-namespace Mind_Your_Drink_Server.Data.Repositories
+namespace Mind_Your_Drink_Models.Data.Repositories
 {
     public interface IUserRepository : IRepository<User>
     {
@@ -8,6 +9,8 @@ namespace Mind_Your_Drink_Server.Data.Repositories
 
         Task<bool> IsExist(string name);
 
-        
+        Task<IEnumerable<User>> GetAllUsers();
+
+
     }
 }

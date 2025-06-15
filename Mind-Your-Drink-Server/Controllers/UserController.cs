@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Mind_Your_Drink_Models.Utilities;
-using Mind_Your_Drink_Server.Data;
-using Mind_Your_Drink_Server.DTO_s;
-using Mind_Your_Drink_Server.Models;
+using Mind_Your_Drink_Models.Data;
+using Mind_Your_Drink_Models.DTO_s;
+using Mind_Your_Drink_Models.Models;
 
-namespace Mind_Your_Drink_Server.Controllers
+namespace Mind_Your_Drink_Models.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -55,6 +55,10 @@ namespace Mind_Your_Drink_Server.Controllers
 
             if(User.HashPassword != request.Password.ToHashPassword())
                 return Unauthorized("Password is not correct");
+            
+            Admin Admin = User as Admin;
+            if (Admin != null)
+                return Ok("Is Admin");
 
             return Ok("Login");
         }

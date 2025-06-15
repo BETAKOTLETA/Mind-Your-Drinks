@@ -1,6 +1,6 @@
-﻿using Mind_Your_Drink_Server.Data.Repositories;
+﻿using Mind_Your_Drink_Models.Data.Repositories;
 
-namespace Mind_Your_Drink_Server.Data
+namespace Mind_Your_Drink_Models.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -11,10 +11,12 @@ namespace Mind_Your_Drink_Server.Data
             _context = context;
             Users = new UserRepository(_context);
             Admins = new AdminRepository(_context);
+            UserDrinks = new UserDrinksRepository(_context);
         }
 
         public IUserRepository Users { get; private set; }
         public IAdminRepository Admins { get; private set; }
+        public IUserDrinksRepository UserDrinks { get; private set; }
 
         public int Complete()
         {

@@ -17,22 +17,26 @@
 
     <!-- Bottom Tab Bar -->
     <TabBar >
-       
         <Tab Title="Today">
             <ShellContent Route="today" ContentTemplate="{DataTemplate local:Today}" />
-        </Tab>
-        <Tab Title="Calendar" >
-            <ShellContent Route="calendar" ContentTemplate="{DataTemplate local:Calendar}" />
         </Tab>
         <Tab Title="Statistics" >
             <ShellContent Route="statistics" ContentTemplate="{DataTemplate local:Statistics}" />
         </Tab>
+        <Tab Title="Calendar" >
+            <ShellContent Route="calendar" ContentTemplate="{DataTemplate local:Calendar}" />
+        </Tab>
         <Tab Title="Settings">
             <ShellContent Route="settings" ContentTemplate="{DataTemplate local:Settings}" />
         </Tab>
+
+        <!-- Admin Tab (Conditionally Visible) -->
+        <Tab x:Name="AdminTab" Title="Admin" IsVisible="False">
+            <ShellContent Route="admin" ContentTemplate="{DataTemplate views:AdminTab}" />
+        </Tab>
     </TabBar>
 
-    <!-- Login Page (not in tab bar) -->
+    <!-- Login Page -->
     <ShellContent 
         Route="login" 
         ContentTemplate="{DataTemplate views:Login}" 

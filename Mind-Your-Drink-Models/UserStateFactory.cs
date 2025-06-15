@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Mind_Your_Drink_Models.UserState;
-using Mind_Your_Drink_Server.Models;
+using Mind_Your_Drink_Models.Models;
 
 namespace Mind_Your_Drink_Models
 {

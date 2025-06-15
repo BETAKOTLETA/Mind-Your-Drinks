@@ -1,4 +1,4 @@
-﻿namespace Mind_Your_Drink_Server.Models
+﻿namespace Mind_Your_Drink_Models.Models
 {
     public interface IDrink
     {
@@ -16,13 +16,15 @@
     {
         public int Id { get; set; }
 
+        public string Icon { get; set; }
+
         public required string Name { get; set; }
 
         public string? Description { get; set; }
 
         public DrinkType Type { get; set; }
 
-        public int PercentageOfAlcohol { get; set; }
+        public int ABV { get; set; }
 
         public double Callories { get; set; }
     }
@@ -34,8 +36,12 @@
     }
     //Эта модель должна создаваться при "сборке" ингридиента
     public class UserDrink : Drink, IUserDrink {
+
+        public int Id { get; set; }
+        public int UserId { get; set; }
         public double Price { get; set; }
         public int VolumeInMl { get; set; }
+        public DateTime Time { get; set; }
     }
 
     //Mb later I will create a State for types of alchol
@@ -43,14 +49,15 @@
     {
         Beer,
         Wine,
+        Cider,
         Vodka,
         Tequila,
         Whiskey,
         Rum,
         Brandy,
         Gin,
-        Liquire,
-        Beverage,
+        Liqueur,
+        MixedDrink,
         Other
     } 
 

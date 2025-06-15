@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mind_Your_Drinks_App"
              x:Class="Mind_Your_Drinks_App.Today"
              BackgroundColor="#B3D9FF"
              Title="Mind Your Drinks">
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="20">
 
+        <!-- Header Section -->
         <VerticalStackLayout Grid.Row="0" Spacing="15">
             <Label Text="Welcome to Today!"
                    FontSize="24"
@@ -19,15 +21,113 @@
                    HorizontalOptions="Center" />
         </VerticalStackLayout>
 
+        <!-- Main Content Area -->
+        <Grid Grid.Row="1"
+              VerticalOptions="Fill">
+
+            <!-- Drink Grid (Visible when selecting drink) -->
+            <CollectionView IsVisible="{Binding IsDrinkGridVisible}"
+                            ItemsSource="{Binding Drinks}"
+                            SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="10" Padding="0" Margin="5" 
+       BackgroundColor="White" HasShadow="True">
+                            <Grid>
+                                <Button BackgroundColor="Transparent"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type local:Today}}, Path=BindingContext.DrinkSelectedCommand}"
+                CommandParameter="{Binding}"/>
+                                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image Source="{Binding Icon}" 
+                   HeightRequest="30" 
+                   VerticalOptions="Center"/>
+                                    <Label Text="{Binding Name}" 
+                   FontSize="12" 
+                   TextColor="Gray"
+                   VerticalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Input Form (Visible when editing drink) -->
+<VerticalStackLayout IsVisible="{Binding IsAddDrinkFormVisible}"
+                     Padding="15"
+                     BackgroundColor="#2E3440"
+                     Spacing="10">
+
+    <Label Text="Enter Drink Details"
+           FontAttributes="Bold"
+           TextColor="AntiqueWhite"
+           HorizontalOptions="Center" />
+
+    <Grid ColumnDefinitions="Auto,*" 
+          RowDefinitions="Auto,Auto,Auto,Auto" 
+          ColumnSpacing="10" 
+          RowSpacing="10">
+
+        <Label Grid.Row="0" Grid.Column="0" 
+               Text="Amount (ml):" 
+               TextColor="AntiqueWhite"
+               VerticalOptions="Center"/>
+        <Entry Grid.Row="0" Grid.Column="1" 
+               Keyboard="Numeric"
+               TextColor="AntiqueWhite"              
+               Text="{Binding SelectedDrink.VolumeInMl}" />
+
+        <Label Grid.Row="1" Grid.Column="0" 
+               Text="ABV:" 
+               TextColor="AntiqueWhite"
+               VerticalOptions="Center"/>
+        <Entry Grid.Row="1" Grid.Column="1" 
+               Keyboard="Numeric"
+               TextColor="AntiqueWhite"
+               Text="{Binding SelectedDrink.ABV}" />
+
+        <Label Grid.Row="2" Grid.Column="0" 
+               Text="Price:" 
+               TextColor="AntiqueWhite"
+               VerticalOptions="Center"/>
+        <Entry Grid.Row="2" Grid.Column="1" 
+               Keyboard="Numeric"
+               TextColor="AntiqueWhite"
+               Text="{Binding SelectedDrink.Price}" />
+
+        <Label Grid.Row="3" Grid.Column="0" 
+               Text="Calories:"
+               TextColor="AntiqueWhite"
+               VerticalOptions="Center"/>
+        <Entry Grid.Row="3" Grid.Column="1" 
+               Keyboard="Numeric"
+               TextColor="AntiqueWhite"
+               Text="{Binding SelectedDrink.Callories}" />
+    </Grid>
+
+        <Button Text="Save Drink"
+                BackgroundColor="#1C1F26"
+                TextColor="AntiqueWhite"
+                Command="{Binding SaveDrinkCommand}" 
+                Margin="0,10,0,10"/> 
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Add/Cancel Button -->
         <Button Grid.Row="2"
-                Text="Add drink"
+                Text="{Binding AddButtonText}"
+                Command="{Binding ToggleAddDrinkCommand}"
                 TextColor="AntiqueWhite"
                 BackgroundColor="#2E3440"
                 FontSize="Large"
+                FontAttributes="Bold"
+                CornerRadius="20"
+                Padding="20,0"
                 HorizontalOptions="Center"
-                Margin="0,0,0,20"/>
+                Margin="0,30,0,10" />
 
     </Grid>
-    
-
 </ContentPage>

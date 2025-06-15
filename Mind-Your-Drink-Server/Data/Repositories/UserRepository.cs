@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Mind_Your_Drink_Server.Models;
+using Mind_Your_Drink_Models.Models;
 
-namespace Mind_Your_Drink_Server.Data.Repositories
+namespace Mind_Your_Drink_Models.Data.Repositories
 {
     public class UserRepository : Repository<User>, IUserRepository
     {
@@ -18,5 +18,9 @@ namespace Mind_Your_Drink_Server.Data.Repositories
             {
                 return await _context.Users.AnyAsync(u => u.Name == name);
             }
-        }
+            public async Task<IEnumerable<User>> GetAllUsers()
+            {
+                return await _context.Set<User>().OfType<User>().ToListAsync();
+            }
     }
+}
