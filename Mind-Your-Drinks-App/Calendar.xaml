@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:calendar="http://schemas.syncfusion.com/maui"
              x:Class="Mind_Your_Drinks_App.Calendar"
              BackgroundColor="#B3D9FF"
              Title="Mind Your Drinks">
-    <VerticalStackLayout Padding="20" Spacing="15">
+    <VerticalStackLayout Padding="20" Spacing="10">
 
-        <Label Text="Welcome to Calendar!"
-               FontSize="24"
-               HorizontalOptions="Center" />
-
-        <Label Text="Here you will see your statistics on consumption"
-               FontSize="16"
-               HorizontalOptions="Center" />
-
+        <!-- Calendar control -->
+        <calendar:SfCalendar x:Name="calendar"
+                               View="Month"
+                               ShowTrailingAndLeadingDates="True"
+                               TodayHighlightBrush="#2E3440"
+                               SelectionMode="Single"
+                               HorizontalOptions="Center"
+                               HeightRequest="450" />
     </VerticalStackLayout>
 </ContentPage>

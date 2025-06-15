@@ -19,7 +19,7 @@ namespace Mind_Your_Drink_Server.Controllers
 
 
         [HttpPost("CreateUserDrink")]
-        public async Task<IActionResult> Ban([FromBody] UserDrinkRequest request)
+        public async Task<IActionResult> CreateUserDrink([FromBody] UserDrinkRequest request)
         {
             var user = await _unitOfWork.Users.GetByName(request.Name);
             if (user == null) 
@@ -35,5 +35,19 @@ namespace Mind_Your_Drink_Server.Controllers
             return Ok();
         }
 
+        [HttpPost("GetAllDrinks")]
+        public async Task<IActionResult> GetAllDrinks ([FromBody] UserNameRequest request)
+        {
+            var user = await _unitOfWork.Users.GetByName(request.Name);
+
+            if (user == null)
+            {
+                return NotFound($"User with name '{request.Name}' not found.");
+            }
+
+            var Drinks = await _unitOfWork.UserDrinks.GetAllByUserId(user.Id);
+
+            return Ok(Drinks);
+        }
     }
 }

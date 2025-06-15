@@ -9,6 +9,13 @@ namespace Mind_Your_Drink_Server.Data.Repositories
         {
         }
 
+        public async Task<IEnumerable<UserDrink>> GetAllByUserId(int id)
+        {
+            return await _context.UserDrinks
+            .Where(ud => ud.UserId == id)
+            .ToListAsync();
+        }
+
         //public async Task<User> GetByName(string name)
         //{
         //    return await _context.Users.FirstOrDefaultAsync(u => u.Name == name);
@@ -27,6 +34,7 @@ namespace Mind_Your_Drink_Server.Data.Repositories
         {
             return await _context.Users.AnyAsync(u => u.Name == name);
         }
+
 
     }
 }

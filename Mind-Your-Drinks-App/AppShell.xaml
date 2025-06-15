@@ -17,15 +17,15 @@
 
     <!-- Bottom Tab Bar -->
     <TabBar >
-       
+
         <Tab Title="Today">
             <ShellContent Route="today" ContentTemplate="{DataTemplate local:Today}" />
         </Tab>
-        <Tab Title="Calendar" >
-            <ShellContent Route="calendar" ContentTemplate="{DataTemplate local:Calendar}" />
-        </Tab>
         <Tab Title="Statistics" >
             <ShellContent Route="statistics" ContentTemplate="{DataTemplate local:Statistics}" />
+        </Tab>
+        <Tab Title="Calendar" >
+            <ShellContent Route="calendar" ContentTemplate="{DataTemplate local:Calendar}" />
         </Tab>
         <Tab Title="Settings">
             <ShellContent Route="settings" ContentTemplate="{DataTemplate local:Settings}" />

@@ -68,8 +68,17 @@ namespace Mind_Your_Drinks_App.ViewModels
         private void LoadDefaultDrinks()
         {
             Drinks.Add(new Drink { Type = DrinkType.Beer, Name = "Beer" });
-            Drinks.Add(new Drink { Type = DrinkType.Liquor, Name = "Liquor" });
-            Drinks.Add(new Drink { Type = DrinkType.Beverage, Name = "Beverage" });
+            Drinks.Add(new Drink { Type = DrinkType.Wine, Name = "Wine" });
+            Drinks.Add(new Drink { Type = DrinkType.Cider, Name = "Cider" });
+            Drinks.Add(new Drink { Type = DrinkType.Vodka, Name = "Vodka" });
+            Drinks.Add(new Drink { Type = DrinkType.Tequila, Name = "Tequila" });
+            Drinks.Add(new Drink { Type = DrinkType.Whiskey, Name = "Whiskey" });
+            Drinks.Add(new Drink { Type = DrinkType.Rum, Name = "Rum" });
+            Drinks.Add(new Drink { Type = DrinkType.Brandy, Name = "Brandy" });
+            Drinks.Add(new Drink { Type = DrinkType.Gin, Name = "Gin" });
+            Drinks.Add(new Drink { Type = DrinkType.Liqueur, Name = "Liqueur" });
+            Drinks.Add(new Drink { Type = DrinkType.MixedDrink, Name = "Mixed Drink" });
+            Drinks.Add(new Drink { Type = DrinkType.Other, Name = "Other" });
         }
 
         private void ToggleAddDrinkForm()

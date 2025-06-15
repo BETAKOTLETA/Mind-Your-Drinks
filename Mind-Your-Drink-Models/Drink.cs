@@ -47,14 +47,15 @@
     {
         Beer,
         Wine,
+        Cider,
         Vodka,
         Tequila,
         Whiskey,
         Rum,
         Brandy,
         Gin,
-        Liquor,
-        Beverage,
+        Liqueur,
+        MixedDrink,
         Other
     } 
 
