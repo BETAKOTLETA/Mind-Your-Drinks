@@ -109,3 +109,12 @@ Accept: application/json
 {
   "name": "k"
 }
+
+### GetAllDrinks Test
+ POST {{Mind_Your_Drink_Server_HostAddress}}/UserDrink/GetAllDrinks
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "k"
+}

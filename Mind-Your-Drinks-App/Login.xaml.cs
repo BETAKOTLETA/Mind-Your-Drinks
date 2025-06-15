@@ -16,13 +16,10 @@ namespace Mind_Your_Drinks_App.Views
         public Login()
         {
             InitializeComponent();
-
-
         }
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
-
             try
             {
                 var url = "https://mind-your-drink-server20250611231310-h8aqf9a8cccgczfm.canadacentral-01.azurewebsites.net/User/Login";
