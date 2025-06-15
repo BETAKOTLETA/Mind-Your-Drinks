@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Mind_Your_Drink_Server.Migrations
+namespace Mind_Your_Drink_Models.Migrations
 {
     /// <inheritdoc />
     public partial class UserDrink : Migration

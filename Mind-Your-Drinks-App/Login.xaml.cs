@@ -1,5 +1,5 @@
 ﻿using Microsoft.Maui.Controls;
-using Mind_Your_Drink_Server.Models;
+using Mind_Your_Drink_Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +42,19 @@ namespace Mind_Your_Drinks_App.Views
 
                     if (response.IsSuccessStatusCode)
                     {
-                        GlobalState.CurrentUser = User.CreateUser(UsernameEntry.Text, PasswordEntry.Text);
+                        if (result.Trim().Trim('"') == "Is Admin")
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Admin Hi", result, "OK");
+                            GlobalState.isAdmin = true;
 
+                            if (Application.Current.MainPage is AppShell shell)
+                            {
+                                shell.OnAdminStatusChanged(this, EventArgs.Empty);
+                            }
+                        }
+
+                        GlobalState.CurrentUser = User.CreateUser(UsernameEntry.Text, PasswordEntry.Text);
+                        
                         Application.Current.MainPage = new AppShell();
                     }
                     else

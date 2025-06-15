@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Mind_Your_Drink_Models.Utilities;
-using Mind_Your_Drink_Server.Data;
-using Mind_Your_Drink_Server.DTO_s;
-using Mind_Your_Drink_Server.Models;
+using Mind_Your_Drink_Models.Data;
+using Mind_Your_Drink_Models.DTO_s;
+using Mind_Your_Drink_Models.Models;
 
-namespace Mind_Your_Drink_Server.Controllers
+namespace Mind_Your_Drink_Models.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Mind_Your_Drink_Server.Data.Repositories
+namespace Mind_Your_Drink_Models.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
@@ -43,7 +43,7 @@ namespace Mind_Your_Drink_Server.Data.Repositories
 
         public IEnumerable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Set<TEntity>().ToList();
         }
 
         public void Update(TEntity entity) => _context.Update(entity);

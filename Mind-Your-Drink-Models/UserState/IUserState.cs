@@ -11,6 +11,8 @@ namespace Mind_Your_Drink_Models.UserState
         string Name { get;}
 
         IUserState Ban();
-        
+
+        IUserState UnBan();
+
     }
 }

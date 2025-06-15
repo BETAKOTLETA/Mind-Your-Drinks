@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Mind_Your_Drinks_App.ViewModels"
+             xmlns:converters="clr-namespace:Mind_Your_Drinks_App.Converters"
+             x:Class="Mind_Your_Drinks_App.UserDetailPage"
+             Title="User Details"
+             BackgroundColor="#2E3440">
+
+    <!-- Add converter resource -->
+    <ContentPage.Resources>
+        <converters:StateToColorConverter x:Key="StateToColorConverter" />
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*,Auto"
+              Padding="20"
+              RowSpacing="15">
+
+            <!-- User Info -->
+            <Frame Grid.Row="0" 
+                   BackgroundColor="#3B4252"
+                   CornerRadius="10"
+                   Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{Binding User.Name}"
+                           FontSize="20"
+                           TextColor="AntiqueWhite"
+                           FontAttributes="Bold"/>
+
+                    <Label Text="{Binding User.Email, StringFormat='Email: {0}'}"
+                           TextColor="#88C0D0"/>
+
+                    <Label Text="{Binding User.StateName, StringFormat='Status: {0}'}"
+                           TextColor="{Binding User.StateName, 
+                                   Converter={StaticResource StateToColorConverter}}"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Ban/Unban Button -->
+            <Button Grid.Row="1"
+                    Text="{Binding BanButtonText}"
+                    Command="{Binding ToggleBanCommand}"
+                    BackgroundColor="#BF616A"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"/>
+
+            <!-- Back Button -->
+            <Button Grid.Row="6"
+                    Text="Back to Users"
+                    Command="{Binding GoBackCommand}"
+                    BackgroundColor="#5E81AC"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>
