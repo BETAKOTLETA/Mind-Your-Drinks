@@ -67,13 +67,10 @@ namespace Mind_Your_Drinks_App.ViewModels
 
         private void LoadDefaultDrinks()
         {
-            Drinks.Add(new Drink { Type = DrinkType.Beer, Name = "Beer" });
+            Drinks.Add(new Drink { Type = DrinkType.Beer, Name = "Beer", Icon = "dotnet_bot.png" });
 
             Drinks.Add(new Drink { Type = DrinkType.Wine, Name = "Wine" });
             Drinks.Add(new Drink { Type = DrinkType.Cider, Name = "Cider" });
-
-    
-            Drinks.Add(new Drink { Type = DrinkType.Beverage, Name = "Beverage" });
 
             Drinks.Add(new Drink { Type = DrinkType.Vodka, Name = "Vodka" });
             Drinks.Add(new Drink { Type = DrinkType.Tequila, Name = "Tequila" });

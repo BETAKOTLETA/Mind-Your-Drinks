@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 
-using Mind_Your_Drink_Server.Models;
-using Syncfusion.Maui.Core.Hosting;
 using Syncfusion.Maui.Core.Hosting;
 
 using Mind_Your_Drink_Models.Models;
