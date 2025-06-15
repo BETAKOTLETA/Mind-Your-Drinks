@@ -174,23 +174,23 @@ Accept: application/json
 }
 
 ### Get all Drinks by date
-POST {{Mind_Your_Drink_Server_LocalAddress}}/UserDrink/GetDrinksByDay
+POST {{Mind_Your_Drink_Server_HostAddress}}/UserDrink/GetDrinksByDay
 Content-Type: application/json
 Accept: application/json
 
 {
-  "Name": "k",
-  "Date": "2025-06-15T00:00:00"
+  "Name": "kk",
+  "Date": "2025-06-15T22:35:01.0618986"
 }
 
 ### GetAllDrinks Test
-POST {{Mind_Your_Drink_Server_LocalAddress}}/UserDrink/GetAllDrinks
+POST {{Mind_Your_Drink_Server_HostAddress}}/UserDrink/GetAllDrinks
 Content-Type: application/json
 Accept: application/json
 
 {
 
-  "name": "k"
+  "name": "kk"
 
 }
 
@@ -208,9 +208,32 @@ Accept: application/json
     "name": "Whiskey",
     "type": 1,
     "abv": 40,
-    "callories": 250,
+    "calories": 250,
     "price": 5.99,
     "volumeInMl": 50,
-    "time": "2025-06-15T00:00:00"
+    "time": "2025-06-15T00:00:00",
+    "icon": "gg.png"
+  }
+}
+
+### User Drink Test
+POST {{Mind_Your_Drink_Server_LocalAddress}}/UserDrink/CreateUserDrink
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "k",
+  "hash": "8254c329a92850f6d539dd376f4816ee2764517da5e0235514af433164480d7a",
+  "userDrink": {
+    "id": 0,
+    "userId": 0,
+    "name": "Whiskey",
+    "type": 1,
+    "abv": 40,
+    "calories": 250,
+    "price": 5.99,
+    "volumeInMl": 50,
+    "time": "2025-06-15T00:00:00",
+    "icon": "gg.png"
   }
 }

@@ -2,6 +2,7 @@
 using Mind_Your_Drink_Models.Models;
 using System.Net.Http.Json;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Mind_Your_Drinks_App.Services
 {
@@ -117,7 +118,54 @@ namespace Mind_Your_Drinks_App.Services
             }
         }
 
+        public async Task<IEnumerable<UserDrink>> GetDrinksByDay(string name, string password, DateTime date)
+        {
+            try
+            {
+                var request = new
+                {
+                    Name = name,
+                    Date = date.ToString("yyyy-MM-dd")
+                };
+
+                var response = await _httpClient.PostAsJsonAsync(
+                    $"{BaseUrl}UserDrink/GetDrinksByDay",
+                    request
+                );
+
+                if (!response.IsSuccessStatusCode)
+                    return Enumerable.Empty<UserDrink>();
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                    Converters = { new DateTimeConverter() }
+                };
+
+                var drinks = await response.Content.ReadFromJsonAsync<IEnumerable<UserDrink>>(options);
+                return drinks ?? Enumerable.Empty<UserDrink>();
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Login Failed", ex.ToString(), "OK");
+                return Enumerable.Empty<UserDrink>();
+            }
+        }
+
+        public class DateTimeConverter : JsonConverter<DateTime>
+        {
+            public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+            {
+                return DateTime.Parse(reader.GetString());
+            }
+
+            public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+            {
+                writer.WriteStringValue(value.ToString("o"));
+            }
+        }
     }
+
 
     public class UserCreateRequest
     {

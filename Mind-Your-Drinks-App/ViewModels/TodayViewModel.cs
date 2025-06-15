@@ -119,8 +119,8 @@ namespace Mind_Your_Drinks_App.ViewModels
             {
                 Name = drink.Name,
                 Type = drink.Type,
-                Time = DateTime.UtcNow
-
+                Time = DateTime.UtcNow,
+                Icon = drink.Icon
                 // Set other properties as needed
             };
 
@@ -144,7 +144,6 @@ namespace Mind_Your_Drinks_App.ViewModels
 
                 if (success)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Success", "Drink saved successfully", "OK");
                     ResetDrinkSelection();
                 }
             }

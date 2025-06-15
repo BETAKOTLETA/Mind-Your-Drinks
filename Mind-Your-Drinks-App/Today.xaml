@@ -87,7 +87,7 @@
         <Entry Grid.Row="1" Grid.Column="1" 
                Keyboard="Numeric"
                TextColor="AntiqueWhite"
-               Text="{Binding SelectedDrink.ABV}" />
+               Text="{Binding SelectedDrink.Abv}" />
 
         <Label Grid.Row="2" Grid.Column="0" 
                Text="Price:" 
@@ -105,7 +105,7 @@
         <Entry Grid.Row="3" Grid.Column="1" 
                Keyboard="Numeric"
                TextColor="AntiqueWhite"
-               Text="{Binding SelectedDrink.Callories}" />
+               Text="{Binding SelectedDrink.Calories}" />
     </Grid>
 
         <Button Text="Save Drink"

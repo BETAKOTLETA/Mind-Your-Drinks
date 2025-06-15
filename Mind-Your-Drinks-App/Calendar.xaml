@@ -1,19 +1,74 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Mind_Your_Drinks_App.ViewModels"
              xmlns:calendar="http://schemas.syncfusion.com/maui"
              x:Class="Mind_Your_Drinks_App.Calendar"
              BackgroundColor="#B3D9FF"
              Title="Mind Your Drinks">
-    <VerticalStackLayout Padding="20" Spacing="10">
 
-        <!-- Calendar control -->
-        <calendar:SfCalendar x:Name="calendar"
-                               View="Month"
-                               ShowTrailingAndLeadingDates="True"
-                               TodayHighlightBrush="#2E3440"
-                               SelectionMode="Single"
-                               HorizontalOptions="Center"
-                               HeightRequest="450" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <!-- Calendar -->
+            <calendar:SfCalendar x:Name="calendar"
+                                 View="Month"
+                                 ShowTrailingAndLeadingDates="True"
+                                 TodayHighlightBrush="#2E3440"
+                                 SelectionMode="Single"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="450"
+                                 SelectedDate="{Binding SelectedDate, Mode=TwoWay}" />
+
+            <!-- Date Header -->
+            <Label Text="{Binding SelectedDate, StringFormat='Drinks for {0:MMMM d, yyyy}'}"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <!-- Drinks List -->
+            <CollectionView ItemsSource="{Binding DrinksForSelectedDate}"
+                            EmptyView="No drinks found for this date"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="12" Padding="12" Margin="8" BackgroundColor="#f0f8ff" HasShadow="True">
+                            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto">
+                                <!-- Image Column -->
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"
+                                       Source="{Binding Icon, TargetNullValue='dotnet_bot.png'}"
+                                       WidthRequest="80"
+                                       HeightRequest="80"
+                                       Aspect="AspectFit"
+                                       Margin="0,0,10,0"/>
+
+                                <!-- Details Column -->
+                                <Label Grid.Row="0" Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       FontSize="18"/>
+
+                                <HorizontalStackLayout Grid.Row="1" Grid.Column="1" Spacing="10">
+                                    <Label Text="ABV:" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Abv, StringFormat='{}{0:F1}%'}"/>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Grid.Row="2" Grid.Column="1" Spacing="10">
+                                    <Label Text="Price:" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Price, StringFormat='${0:F2}'}"/>
+                                    <Label Text="Volume:" FontAttributes="Bold" Margin="20,0,0,0"/>
+                                    <Label Text="{Binding VolumeInMl, StringFormat='{}{0} ml'}"/>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Grid.Row="3" Grid.Column="1" Spacing="10">
+                                    <Label Text="Calories:" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Callories, StringFormat='{0:F0}'}"/>
+                                    <Label Text="Time:" FontAttributes="Bold" Margin="20,0,0,0"/>
+                                    <Label Text="{Binding Time, StringFormat='{0:h:mm tt}'}"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

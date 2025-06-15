@@ -8,7 +8,7 @@
 
         string? Description { get; set; }
 
-        double Callories { get; set; }
+        double Calories { get; set; }
     }
 
     public class Drink : IDrink
@@ -23,9 +23,9 @@
 
         public DrinkType Type { get; set; }
 
-        public int ABV { get; set; }
+        public float Abv { get; set; }
 
-        public double Callories { get; set; }
+        public double Calories { get; set; }
     }
 
     public interface IUserDrink

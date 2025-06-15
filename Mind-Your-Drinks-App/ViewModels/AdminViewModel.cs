@@ -21,7 +21,7 @@ namespace Mind_Your_Drinks_App.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<User> Users
-        {
+        {       
             get => _users;
             set
             {
