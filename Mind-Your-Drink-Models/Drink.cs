@@ -11,7 +11,6 @@
         double Callories { get; set; }
     }
 
-    //Это типо "публичный" алкоголь
     public class Drink : IDrink
     {
         public int Id { get; set; }
@@ -34,7 +33,8 @@
         double Price { get; set; }
         int VolumeInMl { get; set; }
     }
-    //Эта модель должна создаваться при "сборке" ингридиента
+
+
     public class UserDrink : Drink, IUserDrink {
 
         public int Id { get; set; }

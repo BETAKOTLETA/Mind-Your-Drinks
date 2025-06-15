@@ -26,6 +26,7 @@ namespace Mind_Your_Drink_Models.Controllers
                 return NotFound("User is not Found");
             if (user.HashPassword != request.Hash)
                 return BadRequest("Password is not correct");
+            Console.WriteLine($"Date being saved: {request.UserDrink.Time}");
 
             request.UserDrink.UserId = user.Id;
 
@@ -49,5 +50,21 @@ namespace Mind_Your_Drink_Models.Controllers
 
             return Ok(Drinks);
         }
+
+        [HttpPost("GetDrinksByDay")]
+        public async Task<IActionResult> GetDrinksByDay([FromBody] DrinkByDayRequest request)
+        {
+            var user = await _unitOfWork.Users.GetByName(request.Name);
+
+            if (user == null)
+            {
+                return NotFound($"User with name '{request.Name}' not found.");
+            }
+
+            var Drinks = await _unitOfWork.UserDrinks.GetByDayByUserIdAsync(user.Id, request.Date);
+
+            return Ok(Drinks);
+        }
+
     }
 }

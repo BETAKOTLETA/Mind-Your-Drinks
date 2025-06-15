@@ -1,4 +1,4 @@
-@Mind_Your_Drink_Server_LocalAddress = http://localhost:7173
+@Mind_Your_Drink_Server_LocalAddress = http://localhost:5161
 @Mind_Your_Drink_Server_HostAddress = https://mind-your-drink-server20250611231310-h8aqf9a8cccgczfm.canadacentral-01.azurewebsites.net
 
 ### Create 5, 6
@@ -128,7 +128,7 @@ Accept: application/json
 
 {
 
-  "name": "9"
+  "name": "k"
 
 }
 
@@ -151,7 +151,7 @@ Accept: application/json
   "Password": "757b7d716be2b8c25fb166ff696b4d3de46b463592d7f96405a320d10cfb5660"
 }
 
-### GetAllDrinks Test
+### Get all info about user Test
  POST {{Mind_Your_Drink_Server_HostAddress}}/Admin/GetAllUserInfo
 Content-Type: application/json
 Accept: application/json
@@ -160,4 +160,57 @@ Accept: application/json
   "Name": "adminka",
   "Password": "757b7d716be2b8c25fb166ff696b4d3de46b463592d7f96405a320d10cfb5660"
 
+}
+
+### Lox
+
+ POST {{Mind_Your_Drink_Server_HostAddress}}/Admin/GetAllUserInfo
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "adminka",
+  "Password": "757b7d716be2b8c25fb166ff696b4d3de46b463592d7f96405a320d10cfb5660"
+}
+
+### Get all Drinks by date
+POST {{Mind_Your_Drink_Server_LocalAddress}}/UserDrink/GetDrinksByDay
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "k",
+  "Date": "2025-06-15T00:00:00"
+}
+
+### GetAllDrinks Test
+POST {{Mind_Your_Drink_Server_LocalAddress}}/UserDrink/GetAllDrinks
+Content-Type: application/json
+Accept: application/json
+
+{
+
+  "name": "k"
+
+}
+
+### User Drink Test
+POST {{Mind_Your_Drink_Server_HostAddress}}/UserDrink/CreateUserDrink
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "k",
+  "hash": "8254c329a92850f6d539dd376f4816ee2764517da5e0235514af433164480d7a",
+  "userDrink": {
+    "id": 0,
+    "userId": 0,
+    "name": "Whiskey",
+    "type": 1,
+    "abv": 40,
+    "callories": 250,
+    "price": 5.99,
+    "volumeInMl": 50,
+    "time": "2025-06-15T00:00:00"
+  }
 }
