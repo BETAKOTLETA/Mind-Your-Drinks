@@ -224,6 +224,8 @@ namespace Mind_Your_Drinks_App.ViewModels
             var drinks = await _apiService.GetTodayDrinksAsync(
                 GlobalState.CurrentUser.Name);
 
+
+
             float totalEthanol = 0;
 
             //var testDrinks = new List<UserDrink> {

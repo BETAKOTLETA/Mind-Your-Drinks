@@ -87,10 +87,10 @@ namespace Mind_Your_Drinks_App.ViewModels
 
                 IEnumerable<UserDrink> drinks = period switch
                 {
-                    "today" => await _apiService.GetTodayDrinksAsync(GlobalState.CurrentUser.Name),
-                    "week" => await _apiService.GetCurrentWeekDrinksAsync(GlobalState.CurrentUser.Name),
-                    "month" => await _apiService.GetCurrentMonthDrinksAsync(GlobalState.CurrentUser.Name),
-                    "year" => await _apiService.GetCurrentYearDrinksAsync(GlobalState.CurrentUser.Name),
+                    "today" => await _apiService.GetTodayDrinksAsync(GlobalState.CurrentUser.Name) ?? Enumerable.Empty<UserDrink>(),
+                    "week" => await _apiService.GetCurrentWeekDrinksAsync(GlobalState.CurrentUser.Name) ?? Enumerable.Empty<UserDrink>(),
+                    "month" => await _apiService.GetCurrentMonthDrinksAsync(GlobalState.CurrentUser.Name) ?? Enumerable.Empty<UserDrink>(),
+                    "year" => await _apiService.GetCurrentYearDrinksAsync(GlobalState.CurrentUser.Name) ?? Enumerable.Empty<UserDrink>(),
                     _ => Enumerable.Empty<UserDrink>()
                 };
 
