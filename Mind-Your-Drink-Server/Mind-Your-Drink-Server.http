@@ -244,7 +244,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "Name": "x",
+  "Name": "k",
   "Period": "today"
 }
 

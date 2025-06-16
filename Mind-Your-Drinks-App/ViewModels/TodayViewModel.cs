@@ -221,10 +221,8 @@ namespace Mind_Your_Drinks_App.ViewModels
             if (GlobalState.CurrentUser == null)
                 return;
 
-            var drinks = await _apiService.GetDrinksByDay(
-                GlobalState.CurrentUser.Name,
-                GlobalState.CurrentUser.HashPassword,
-                DateTime.Today);
+            var drinks = await _apiService.GetTodayDrinksAsync(
+                GlobalState.CurrentUser.Name);
 
             float totalEthanol = 0;
 
