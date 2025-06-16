@@ -20,7 +20,9 @@ namespace Mind_Your_Drink_Models.Data.Repositories
             }
             public async Task<IEnumerable<User>> GetAllUsers()
             {
-                return await _context.Set<User>().OfType<User>().ToListAsync();
-            }
+            return await _context.Set<User>()
+            .Where(u => u.GetType() == typeof(User))
+            .ToListAsync();
+        }
     }
 }

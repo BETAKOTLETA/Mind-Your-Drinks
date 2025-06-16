@@ -2,17 +2,54 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mind_Your_Drinks_App.Statistics"
+             xmlns:viewModels="clr-namespace:Mind_Your_Drinks_App.ViewModels"
              BackgroundColor="#B3D9FF"
              Title="Mind Your Drinks">
-            
+
+    <ContentPage.BindingContext>
+        <viewModels:StatisticsViewModel />
+    </ContentPage.BindingContext>
+
     <VerticalStackLayout Padding="20" Spacing="15">
 
+        <!-- Title -->
         <Label Text="Welcome to Statistics!"
                FontSize="24"
                HorizontalOptions="Center" />
 
         <Label Text="Here you will see your daily, weekly and monthly statistics"
                FontSize="16"
+               HorizontalOptions="Center" />
+
+        <!-- Period Display -->
+        <Label Text="{Binding PeriodLabel}" 
+               FontSize="16" FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <!-- Time Filter Buttons -->
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Button Text="Today" TextColor="AntiqueWhite" BackgroundColor="#2E3440" Command="{Binding TodayCommand}" />
+            <Button Text="Week" TextColor="AntiqueWhite" BackgroundColor="#2E3440" Command="{Binding WeekCommand}" />
+            <Button Text="Month" TextColor="AntiqueWhite" BackgroundColor="#2E3440" Command="{Binding MonthCommand}" />
+            <Button Text="Year" TextColor="AntiqueWhite" BackgroundColor="#2E3440" Command="{Binding YearCommand}" />
+        </HorizontalStackLayout>
+
+        <!-- Statistics Labels -->
+        <VerticalStackLayout Spacing="10" Padding="10">
+            <Label Text="{Binding TotalEthanolText}" FontSize="18" />
+            <Label Text="{Binding TotalCaloriesText}" FontSize="18" />
+            <Label Text="{Binding TotalPriceText}" FontSize="18" />
+        </VerticalStackLayout>
+
+        <!-- Loading indicator -->
+        <ActivityIndicator IsVisible="{Binding IsLoading}" 
+                           IsRunning="{Binding IsLoading}"
+                           HorizontalOptions="Center" />
+
+        <!-- Error message -->
+        <Label Text="{Binding ErrorMessage}" 
+               TextColor="Red"
+               IsVisible="{Binding ErrorMessage, Converter={StaticResource StringIsNotNullOrEmptyConverter}}"
                HorizontalOptions="Center" />
 
     </VerticalStackLayout>

@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Windows.Input;
+using Mind_Your_Drinks_App.Services;
 
 namespace Mind_Your_Drinks_App.ViewModels
 {
@@ -21,6 +22,16 @@ namespace Mind_Your_Drinks_App.ViewModels
         public ICommand DrinkSelectedCommand { get; }
         public ICommand SaveDrinkCommand { get; }
 
+
+        private const float DailyEthanolTarget = 40f;
+        private float _currentProgress;
+        public float CurrentProgress
+        {
+            get => _currentProgress;
+            set => SetField(ref _currentProgress, value);
+        }
+
+        private readonly ApiService _apiService = new(new HttpClient());
 
         private UserDrink? _selectedDrink;
         private bool _isDrinkGridVisible;
@@ -67,22 +78,18 @@ namespace Mind_Your_Drinks_App.ViewModels
 
         private void LoadDefaultDrinks()
         {
-            Drinks.Add(new Drink { Type = DrinkType.Beer, Name = "Beer", Icon = "dotnet_bot.png" });
-
-            Drinks.Add(new Drink { Type = DrinkType.Wine, Name = "Wine" });
-            Drinks.Add(new Drink { Type = DrinkType.Cider, Name = "Cider" });
-
-            Drinks.Add(new Drink { Type = DrinkType.Vodka, Name = "Vodka" });
-            Drinks.Add(new Drink { Type = DrinkType.Tequila, Name = "Tequila" });
-            Drinks.Add(new Drink { Type = DrinkType.Whiskey, Name = "Whiskey" });
-            Drinks.Add(new Drink { Type = DrinkType.Rum, Name = "Rum" });
-            Drinks.Add(new Drink { Type = DrinkType.Brandy, Name = "Brandy" });
-            Drinks.Add(new Drink { Type = DrinkType.Gin, Name = "Gin" });
-
-            Drinks.Add(new Drink { Type = DrinkType.Liqueur, Name = "Liqueur" });
-            Drinks.Add(new Drink { Type = DrinkType.MixedDrink, Name = "Mixed Drink" });
-
-            Drinks.Add(new Drink { Type = DrinkType.Other, Name = "Other" });
+            Drinks.Add(new Drink { Type = DrinkType.Beer, Name = "Beer", Icon = "beer" });
+            Drinks.Add(new Drink { Type = DrinkType.Wine, Name = "Wine", Icon = "wine" });
+            Drinks.Add(new Drink { Type = DrinkType.Cider, Name = "Cider", Icon = "cider"});
+            Drinks.Add(new Drink { Type = DrinkType.Vodka, Name = "Vodka", Icon = "vodka"});
+            Drinks.Add(new Drink { Type = DrinkType.Tequila, Name = "Tequila", Icon = "tequila"});
+            Drinks.Add(new Drink { Type = DrinkType.Whiskey, Name = "Whiskey", Icon = "whiskey"});
+            Drinks.Add(new Drink { Type = DrinkType.Rum, Name = "Rum", Icon = "rum"});
+            Drinks.Add(new Drink { Type = DrinkType.Brandy, Name = "Brandy", Icon = "brandy" });
+            Drinks.Add(new Drink { Type = DrinkType.Gin, Name = "Gin", Icon = "gin"});
+            Drinks.Add(new Drink { Type = DrinkType.Liqueur, Name = "Liqueur", Icon = "liqueur"});
+            Drinks.Add(new Drink { Type = DrinkType.MixedDrink, Name = "Mixed Drink", Icon = "mixeddrink"});
+            Drinks.Add(new Drink { Type = DrinkType.Other, Name = "Other"});
         }
 
         private void ToggleAddDrinkForm()
@@ -119,9 +126,13 @@ namespace Mind_Your_Drinks_App.ViewModels
             {
                 Name = drink.Name,
                 Type = drink.Type,
-                Time = DateTime.UtcNow
+                Time = TimeZoneInfo.ConvertTimeFromUtc(
+                   DateTime.UtcNow,
+                   TimeZoneInfo.FindSystemTimeZoneById(
+                       OperatingSystem.IsAndroid() ? "Europe/Warsaw"   // IANA ID (Android/Linux)
+                                                   : "Central European Standard Time")), // Windows/iOS ID
+                Icon = drink.Icon
 
-                // Set other properties as needed
             };
 
             IsDrinkGridVisible = false;
@@ -133,19 +144,17 @@ namespace Mind_Your_Drinks_App.ViewModels
         {
             if (SelectedDrink == null || GlobalState.CurrentUser == null)
             {
-                await Application.Current.MainPage.DisplayAlert($"{SelectedDrink == null}", "Selected", "gg");
-                await Application.Current.MainPage.DisplayAlert($"{GlobalState.CurrentUser == null}", "Current", "gg");
+                await Application.Current.MainPage.DisplayAlert("Error", "No drink or user selected", "OK");
                 return;
             }
 
             try
             {
                 var success = await SaveDrinkToServer(GlobalState.CurrentUser, SelectedDrink);
-
                 if (success)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Success", "Drink saved successfully", "OK");
                     ResetDrinkSelection();
+                    await LoadProgressAsync(); 
                 }
             }
             catch (Exception ex)
@@ -153,6 +162,7 @@ namespace Mind_Your_Drinks_App.ViewModels
                 await HandleError(ex);
             }
         }
+
 
         private async Task<bool> SaveDrinkToServer(User user, UserDrink userDrink)
         {
@@ -206,6 +216,35 @@ namespace Mind_Your_Drinks_App.ViewModels
                 "OK"
             );
         }
+        public async Task LoadProgressAsync()
+        {
+            if (GlobalState.CurrentUser == null)
+                return;
+
+            var drinks = await _apiService.GetTodayDrinksAsync(
+                GlobalState.CurrentUser.Name);
+
+            float totalEthanol = 0;
+
+            //var testDrinks = new List<UserDrink> {
+            //new UserDrink { Name = "beer", VolumeInMl = 100, Abv = 3.0f }
+            //    };
+
+            foreach (var drink in drinks ?? Enumerable.Empty<UserDrink>())
+            {
+                float ethanol = drink.VolumeInMl * (drink.Abv / 100f);
+                totalEthanol += ethanol;
+
+                //await Application.Current.MainPage.DisplayAlert("Drink", $"{drink.VolumeInMl}ml @ {drink.Abv}% = {ethanol}g ethanol", "OK");
+            } 
+
+            
+            float progress = totalEthanol / DailyEthanolTarget;
+
+            CurrentProgress = Math.Min(progress, 20f);
+        }
+
+
 
         #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler? PropertyChanged;

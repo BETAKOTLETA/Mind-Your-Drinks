@@ -8,10 +8,9 @@
 
         string? Description { get; set; }
 
-        double Callories { get; set; }
+        double Calories { get; set; }
     }
 
-    //Это типо "публичный" алкоголь
     public class Drink : IDrink
     {
         public int Id { get; set; }
@@ -24,22 +23,23 @@
 
         public DrinkType Type { get; set; }
 
-        public int ABV { get; set; }
+        public float Abv { get; set; }
 
-        public double Callories { get; set; }
+        public double Calories { get; set; }
     }
 
     public interface IUserDrink
     {
-        double Price { get; set; }
+        decimal Price { get; set; }
         int VolumeInMl { get; set; }
     }
-    //Эта модель должна создаваться при "сборке" ингридиента
+
+
     public class UserDrink : Drink, IUserDrink {
 
         public int Id { get; set; }
         public int UserId { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public int VolumeInMl { get; set; }
         public DateTime Time { get; set; }
     }

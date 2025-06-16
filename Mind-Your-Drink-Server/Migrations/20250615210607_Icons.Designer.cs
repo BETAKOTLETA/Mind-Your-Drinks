@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mind_Your_Drink_Models.Data;
 
@@ -11,9 +12,11 @@ using Mind_Your_Drink_Models.Data;
 namespace Mind_Your_Drink_Models.Migrations
 {
     [DbContext(typeof(MindDrinkDBContext))]
-    partial class MindDrinkDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250615210607_Icons")]
+    partial class Icons
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,10 +70,10 @@ namespace Mind_Your_Drink_Models.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<float>("Abv")
-                        .HasColumnType("real");
+                    b.Property<int>("ABV")
+                        .HasColumnType("int");
 
-                    b.Property<double>("Calories")
+                    b.Property<double>("Callories")
                         .HasColumnType("float");
 
                     b.Property<string>("Description")
@@ -84,8 +87,8 @@ namespace Mind_Your_Drink_Models.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");

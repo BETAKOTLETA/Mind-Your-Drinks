@@ -31,7 +31,7 @@ namespace Mind_Your_Drink_Models.Models
 
         public User()
         {
-            _state = new ActiveState(); // or null if necessary
+            _state = new ActiveState(); 
             StateName = _state.Name;
         }
 
