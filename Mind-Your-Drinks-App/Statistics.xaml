@@ -28,10 +28,10 @@
 
         <!-- Time Filter Buttons -->
         <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-            <Button Text="Today" Command="{Binding TodayCommand}" />
-            <Button Text="Week" Command="{Binding WeekCommand}" />
-            <Button Text="Month" Command="{Binding MonthCommand}" />
-            <Button Text="Year" Command="{Binding YearCommand}" />
+            <Button Text="Today" TextColor="AntiqueWhite" BackgroundColor="#2E3440" Command="{Binding TodayCommand}" />
+            <Button Text="Week" TextColor="AntiqueWhite" BackgroundColor="#2E3440" Command="{Binding WeekCommand}" />
+            <Button Text="Month" TextColor="AntiqueWhite" BackgroundColor="#2E3440" Command="{Binding MonthCommand}" />
+            <Button Text="Year" TextColor="AntiqueWhite" BackgroundColor="#2E3440" Command="{Binding YearCommand}" />
         </HorizontalStackLayout>
 
         <!-- Statistics Labels -->
