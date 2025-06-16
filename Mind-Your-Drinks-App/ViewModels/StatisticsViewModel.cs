@@ -108,6 +108,11 @@ namespace Mind_Your_Drinks_App.ViewModels
 
         private void CalculateAndDisplayTotals(IEnumerable<UserDrink> drinks)
         {
+            if (drinks == null)
+            {
+                drinks = Enumerable.Empty<UserDrink>();
+            }
+
             double totalEthanol = 0;
             double totalCalories = 0;
             decimal totalPrice = 0;

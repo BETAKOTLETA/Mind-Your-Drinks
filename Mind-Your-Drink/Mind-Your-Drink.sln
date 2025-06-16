@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36203.30 d17.14
+VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mind-Your-Drink-Models", "..\Mind-Your-Drink-Models\Mind-Your-Drink-Models.csproj", "{B32CAF0A-B2EE-13A7-9E0A-6A1A501799AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mind-Your-Drinks-App", "..\Mind-Your-Drinks-App\Mind-Your-Drinks-App.csproj", "{36A70081-54D6-7A92-6257-51D593C2B41F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mind-Your-Drink-Server", "..\Mind-Your-Drink-Server\Mind-Your-Drink-Server.csproj", "{495A767F-B7C7-7DA9-A565-0E2B385FEFB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelTest", "ModelTest\ModelTest.csproj", "{CFF3E4AF-7E32-4155-A050-317D39E528EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,12 +23,17 @@ Global
 		{B32CAF0A-B2EE-13A7-9E0A-6A1A501799AA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{36A70081-54D6-7A92-6257-51D593C2B41F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{36A70081-54D6-7A92-6257-51D593C2B41F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36A70081-54D6-7A92-6257-51D593C2B41F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{36A70081-54D6-7A92-6257-51D593C2B41F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36A70081-54D6-7A92-6257-51D593C2B41F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{495A767F-B7C7-7DA9-A565-0E2B385FEFB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{495A767F-B7C7-7DA9-A565-0E2B385FEFB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{495A767F-B7C7-7DA9-A565-0E2B385FEFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{495A767F-B7C7-7DA9-A565-0E2B385FEFB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFF3E4AF-7E32-4155-A050-317D39E528EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF3E4AF-7E32-4155-A050-317D39E528EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF3E4AF-7E32-4155-A050-317D39E528EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF3E4AF-7E32-4155-A050-317D39E528EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
