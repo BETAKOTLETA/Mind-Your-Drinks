@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Mind_Your_Drink_Models.Utilities;
+using Microsoft.EntityFrameworkCore;
 using Mind_Your_Drink_Models.Data;
 using Mind_Your_Drink_Models.DTO_s;
 using Mind_Your_Drink_Models.Models;
+using Mind_Your_Drink_Models.Utilities;
 
 namespace Mind_Your_Drink_Models.Controllers
 {
@@ -66,5 +67,26 @@ namespace Mind_Your_Drink_Models.Controllers
             return Ok(Drinks);
         }
 
+        [HttpPost("GetDrinksByPeriod")]
+        public async Task<IActionResult> GetDrinksByPeriod([FromBody] PeriodRequest request)
+        {
+
+            var user = await _unitOfWork.Users.GetByName(request.Name);
+            if (user == null)
+                return NotFound("User is not Found");
+
+            try
+            {
+                var drinks = await _unitOfWork.UserDrinks.GetDrinksByPeriodAsync(
+                    user.Id,
+                    request.Period
+                );
+                return Ok(drinks);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

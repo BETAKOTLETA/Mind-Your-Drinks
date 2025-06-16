@@ -152,6 +152,60 @@ namespace Mind_Your_Drinks_App.Services
             }
         }
 
+        public async Task<IEnumerable<UserDrink>> GetTodayDrinksAsync(string name)
+        {
+            return await GetDrinksByPeriod(name, "today");
+        }
+
+        public async Task<IEnumerable<UserDrink>> GetCurrentWeekDrinksAsync(string name)
+        {
+            return await GetDrinksByPeriod(name, "week");
+        }
+
+        public async Task<IEnumerable<UserDrink>> GetCurrentMonthDrinksAsync(string name)
+        {
+            return await GetDrinksByPeriod(name, "month");
+        }
+
+        public async Task<IEnumerable<UserDrink>> GetCurrentYearDrinksAsync(string name)
+        {
+            return await GetDrinksByPeriod(name, "year");
+        }
+
+        private async Task<IEnumerable<UserDrink>> GetDrinksByPeriod(string name, string period)
+        {
+            try
+            {
+                var request = new
+                {
+                    Name = name,
+                    Period = period
+                };
+
+                var response = await _httpClient.PostAsJsonAsync(
+                    $"{BaseUrl}UserDrink/GetDrinksByPeriod",
+                    request
+                );
+
+                if (!response.IsSuccessStatusCode)
+                    return Enumerable.Empty<UserDrink>();
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                    Converters = { new DateTimeConverter() }
+                };
+
+                return await response.Content.ReadFromJsonAsync<IEnumerable<UserDrink>>(options)
+                       ?? Enumerable.Empty<UserDrink>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching {period} drinks: {ex.Message}");
+                return Enumerable.Empty<UserDrink>();
+            }
+        }
+
         public class DateTimeConverter : JsonConverter<DateTime>
         {
             public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

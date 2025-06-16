@@ -12,7 +12,6 @@ namespace Mind_Your_Drink_Models.Data.Repositories
 
         Task<IEnumerable<UserDrink>> GetByDayByUserIdAsync(int id, DateTime date);
 
-
-
+        Task<IEnumerable<UserDrink>> GetDrinksByPeriodAsync(int userId, string period);
     }
 }

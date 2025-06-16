@@ -2,8 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mind_Your_Drinks_App.Statistics"
+             xmlns:viewModels="clr-namespace:Mind_Your_Drinks_App.ViewModels"
              BackgroundColor="#B3D9FF"
              Title="Mind Your Drinks">
+
+    <ContentPage.BindingContext>
+        <viewModels:StatisticsViewModel />
+    </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="20" Spacing="15">
 
@@ -16,25 +21,36 @@
                FontSize="16"
                HorizontalOptions="Center" />
 
+        <!-- Period Display -->
+        <Label Text="{Binding PeriodLabel}" 
+               FontSize="16" FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
         <!-- Time Filter Buttons -->
-        <HorizontalStackLayout Spacing="10"
-                                HorizontalOptions="Center">
-            <Button Text="Today" />
-            <Button Text="Week" />
-            <Button Text="Month" />
-            <Button Text="Year" />
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Button Text="Today" Command="{Binding TodayCommand}" />
+            <Button Text="Week" Command="{Binding WeekCommand}" />
+            <Button Text="Month" Command="{Binding MonthCommand}" />
+            <Button Text="Year" Command="{Binding YearCommand}" />
         </HorizontalStackLayout>
 
         <!-- Statistics Labels -->
-        <VerticalStackLayout Spacing="10"
-                             Padding="10">
-            <Label Text="Total Ethanol: "
-                   FontSize="18" />
-            <Label Text="Total Calories: "
-                   FontSize="18" />
-            <Label Text="Total Price: "
-                   FontSize="18" />
+        <VerticalStackLayout Spacing="10" Padding="10">
+            <Label Text="{Binding TotalEthanolText}" FontSize="18" />
+            <Label Text="{Binding TotalCaloriesText}" FontSize="18" />
+            <Label Text="{Binding TotalPriceText}" FontSize="18" />
         </VerticalStackLayout>
+
+        <!-- Loading indicator -->
+        <ActivityIndicator IsVisible="{Binding IsLoading}" 
+                           IsRunning="{Binding IsLoading}"
+                           HorizontalOptions="Center" />
+
+        <!-- Error message -->
+        <Label Text="{Binding ErrorMessage}" 
+               TextColor="Red"
+               IsVisible="{Binding ErrorMessage, Converter={StaticResource StringIsNotNullOrEmptyConverter}}"
+               HorizontalOptions="Center" />
 
     </VerticalStackLayout>
 </ContentPage>

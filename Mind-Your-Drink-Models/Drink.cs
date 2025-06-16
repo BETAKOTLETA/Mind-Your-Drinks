@@ -30,7 +30,7 @@
 
     public interface IUserDrink
     {
-        double Price { get; set; }
+        decimal Price { get; set; }
         int VolumeInMl { get; set; }
     }
 
@@ -39,7 +39,7 @@
 
         public int Id { get; set; }
         public int UserId { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public int VolumeInMl { get; set; }
         public DateTime Time { get; set; }
     }
