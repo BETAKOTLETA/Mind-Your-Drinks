@@ -13,5 +13,11 @@ namespace Mind_Your_Drinks_App
         public static User CurrentUser { get; set; }
 
         public static bool isAdmin { get; set; }
+
+        public static void Reset()
+        {
+            CurrentUser = null;
+            isAdmin = false;
+        }
     }
 }

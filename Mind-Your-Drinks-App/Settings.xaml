@@ -15,6 +15,14 @@
                FontSize="16"
                HorizontalOptions="Center" />
 
+        <Button Text="Log Out"
+                BackgroundColor="Red"
+                TextColor="White"
+                CornerRadius="10"
+                HorizontalOptions="Center"
+                WidthRequest="150"
+                Clicked="OnLogoutClicked" />
+
     </VerticalStackLayout>
 
 </ContentPage>
