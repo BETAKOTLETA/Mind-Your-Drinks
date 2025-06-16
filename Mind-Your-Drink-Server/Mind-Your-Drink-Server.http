@@ -179,8 +179,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "Name": "kk",
-  "Date": "2025-06-15T22:35:01.0618986"
+  "Name": "l",
+  "Date": "2025-06-16T22:35:01.0618986"
 }
 
 ### GetAllDrinks Test

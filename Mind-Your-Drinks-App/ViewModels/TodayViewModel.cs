@@ -130,9 +130,13 @@ namespace Mind_Your_Drinks_App.ViewModels
             {
                 Name = drink.Name,
                 Type = drink.Type,
-                Time = DateTime.Now,
+                Time = TimeZoneInfo.ConvertTimeFromUtc(
+                   DateTime.UtcNow,
+                   TimeZoneInfo.FindSystemTimeZoneById(
+                       OperatingSystem.IsAndroid() ? "Europe/Warsaw"   // IANA ID (Android/Linux)
+                                                   : "Central European Standard Time")), // Windows/iOS ID
                 Icon = drink.Icon
-                // Set other properties as needed
+
             };
 
             IsDrinkGridVisible = false;
