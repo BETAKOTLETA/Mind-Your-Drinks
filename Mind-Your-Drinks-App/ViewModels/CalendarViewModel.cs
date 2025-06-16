@@ -21,6 +21,14 @@ namespace Mind_Your_Drinks_App.ViewModels
             SelectedDate = DateTime.Today;
         }
 
+        public async Task RefreshAsync()
+        {
+            if (SelectedDate.HasValue)
+            {
+                await LoadDrinksForDateAsync(SelectedDate.Value);
+            }
+        }
+
         public DateTime? SelectedDate
         {
             get => _selectedDate;
@@ -31,7 +39,7 @@ namespace Mind_Your_Drinks_App.ViewModels
                     _selectedDate = value;
                     OnPropertyChanged();
                     if (value.HasValue)
-                        LoadDrinksForDate(value.Value);
+                        LoadDrinksForDateAsync(value.Value);
                 }
             }
         }
@@ -49,32 +57,16 @@ namespace Mind_Your_Drinks_App.ViewModels
 
         //public int TotalCalories => DrinksForSelectedDate.Sum(d => d.Calories);
 
-        private async void LoadDrinksForDate(DateTime date)
+        public async Task LoadDrinksForDateAsync(DateTime date)
         {
             try
             {
                 var drinks = await _apiService.GetDrinksByDay(
                     GlobalState.CurrentUser.Name,
                     GlobalState.CurrentUser.HashPassword,
-                    date
-                );
+                    date);
 
                 DrinksForSelectedDate = new ObservableCollection<UserDrink>(drinks);
-
-                if (DrinksForSelectedDate.Count > 0)
-                {
-                    //await Application.Current.MainPage.DisplayAlert(
-                    //    "Drink Info",
-                    //    $"{DrinksForSelectedDate[0].Name} - ABV: {DrinksForSelectedDate[0].Abv}%",
-                    //    "OK");
-                }
-                else
-                {
-                    //await Application.Current.MainPage.DisplayAlert(
-                    //    "Info",
-                    //    "No drinks found for this date",
-                    //    "OK");
-                }
             }
             catch (Exception ex)
             {

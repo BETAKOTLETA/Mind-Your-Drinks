@@ -13,5 +13,13 @@ public partial class Calendar : ContentPage
             var apiService = new ApiService(httpClient);
             BindingContext = new CalendarViewModel(apiService);
         }
-    }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (BindingContext is CalendarViewModel vm)
+            await vm.RefreshAsync();   
+        }
+}
 
