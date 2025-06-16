@@ -152,7 +152,7 @@ Accept: application/json
 }
 
 ### Get all info about user Test
- POST {{Mind_Your_Drink_Server_HostAddress}}/Admin/GetAllUserInfo
+ POST {{Mind_Your_Drink_Server_LocalAddress}}/Admin/GetAllUserInfo
 Content-Type: application/json
 Accept: application/json
 

@@ -12,18 +12,34 @@
     Shell.TabBarTitleColor="CadetBlue"
     Shell.TabBarUnselectedColor="AntiqueWhite"
     BackgroundColor="#2E3440"
-    TitleColor="AntiqueWhite"
-    >
+    TitleColor="AntiqueWhite">
+
+    <!-- TitleView showing GlobalState.User.Name -->
+    <Shell.TitleView>
+        <Grid Padding="10">
+            <Label
+                Text="{Binding Name}"
+                TextColor="AntiqueWhite"
+                FontSize="Medium"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+                <Label.BindingContext>
+                    <x:Static Member="local:GlobalState.CurrentUser" />
+                </Label.BindingContext>
+            </Label>
+        </Grid>
+    </Shell.TitleView>
 
     <!-- Bottom Tab Bar -->
-    <TabBar >
+    <TabBar>
         <Tab Title="Today">
             <ShellContent Route="today" ContentTemplate="{DataTemplate local:Today}" />
         </Tab>
-        <Tab Title="Statistics" >
+        <Tab Title="Statistics">
             <ShellContent Route="statistics" ContentTemplate="{DataTemplate local:Statistics}" />
         </Tab>
-        <Tab Title="Calendar" >
+        <Tab Title="Calendar">
             <ShellContent Route="calendar" ContentTemplate="{DataTemplate local:Calendar}" />
         </Tab>
         <Tab Title="Settings">

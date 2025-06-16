@@ -4,9 +4,10 @@
              x:Class="Mind_Your_Drinks_App.Statistics"
              BackgroundColor="#B3D9FF"
              Title="Mind Your Drinks">
-            
+
     <VerticalStackLayout Padding="20" Spacing="15">
 
+        <!-- Title -->
         <Label Text="Welcome to Statistics!"
                FontSize="24"
                HorizontalOptions="Center" />
@@ -14,6 +15,26 @@
         <Label Text="Here you will see your daily, weekly and monthly statistics"
                FontSize="16"
                HorizontalOptions="Center" />
+
+        <!-- Time Filter Buttons -->
+        <HorizontalStackLayout Spacing="10"
+                                HorizontalOptions="Center">
+            <Button Text="Today" />
+            <Button Text="Week" />
+            <Button Text="Month" />
+            <Button Text="Year" />
+        </HorizontalStackLayout>
+
+        <!-- Statistics Labels -->
+        <VerticalStackLayout Spacing="10"
+                             Padding="10">
+            <Label Text="Total Ethanol: "
+                   FontSize="18" />
+            <Label Text="Total Calories: "
+                   FontSize="18" />
+            <Label Text="Total Price: "
+                   FontSize="18" />
+        </VerticalStackLayout>
 
     </VerticalStackLayout>
 </ContentPage>
