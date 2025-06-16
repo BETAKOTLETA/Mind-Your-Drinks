@@ -60,7 +60,7 @@
 
                                 <HorizontalStackLayout Grid.Row="3" Grid.Column="1" Spacing="10">
                                     <Label Text="Calories:" FontAttributes="Bold"/>
-                                    <Label Text="{Binding Callories, StringFormat='{0:F0}'}"/>
+                                    <Label Text="{Binding Calories, StringFormat='{0:F0}'}"/>
                                     <Label Text="Time:" FontAttributes="Bold" Margin="20,0,0,0"/>
                                     <Label Text="{Binding Time, StringFormat='{0:h:mm tt}'}"/>
                                 </HorizontalStackLayout>
