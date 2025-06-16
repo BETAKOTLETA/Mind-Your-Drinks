@@ -12,11 +12,6 @@ namespace Mind_Your_Drinks_App.ViewModels
     {
         private readonly ApiService _apiService;
 
-        public StatisticsViewModel()
-        {
-
-        }
-
         private bool _isLoading;
         public bool IsLoading
         {
@@ -73,9 +68,8 @@ namespace Mind_Your_Drinks_App.ViewModels
             MonthCommand = new Command(async () => await LoadDrinksForPeriod("month"));
             YearCommand = new Command(async () => await LoadDrinksForPeriod("year"));
 
-            _ = LoadDrinksForPeriod("today"); // Load today's stats by default
+            _ = LoadDrinksForPeriod("today");
         }
-
 
         private async Task LoadDrinksForPeriod(string period)
         {
@@ -131,9 +125,7 @@ namespace Mind_Your_Drinks_App.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {

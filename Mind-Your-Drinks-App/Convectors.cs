@@ -1,22 +1,9 @@
-using Mind_Your_Drinks_App.Services;
-using Mind_Your_Drinks_App.ViewModels;
+п»їusing System;
 using System.Globalization;
+using Microsoft.Maui.Controls;
 
-namespace Mind_Your_Drinks_App;
-
-public partial class Statistics : ContentPage
+namespace Mind_Your_Drinks_App.Converters
 {
-    public Statistics()
-    {
-        InitializeComponent();
-
-        var httpClient = new HttpClient();
-        var apiService = new ApiService(httpClient);
-
-        BindingContext = new StatisticsViewModel(apiService);
-    }
-
-    // Конвертер для проверки непустой строки (для ошибки)
     public class StringIsNotNullOrEmptyConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

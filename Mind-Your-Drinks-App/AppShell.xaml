@@ -14,23 +14,6 @@
     BackgroundColor="#2E3440"
     TitleColor="AntiqueWhite">
 
-    <!-- TitleView showing GlobalState.User.Name -->
-    <Shell.TitleView>
-        <Grid Padding="10">
-            <Label
-                Text="{Binding Name}"
-                TextColor="AntiqueWhite"
-                FontSize="Medium"
-                VerticalOptions="Center"
-                HorizontalOptions="Center">
-
-                <Label.BindingContext>
-                    <x:Static Member="local:GlobalState.CurrentUser" />
-                </Label.BindingContext>
-            </Label>
-        </Grid>
-    </Shell.TitleView>
-
     <!-- Bottom Tab Bar -->
     <TabBar>
         <Tab Title="Today">
