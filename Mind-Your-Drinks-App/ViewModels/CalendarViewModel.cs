@@ -63,17 +63,17 @@ namespace Mind_Your_Drinks_App.ViewModels
 
                 if (DrinksForSelectedDate.Count > 0)
                 {
-                    await Application.Current.MainPage.DisplayAlert(
-                        "Drink Info",
-                        $"{DrinksForSelectedDate[0].Name} - ABV: {DrinksForSelectedDate[0].Abv}%",
-                        "OK");
+                    //await Application.Current.MainPage.DisplayAlert(
+                    //    "Drink Info",
+                    //    $"{DrinksForSelectedDate[0].Name} - ABV: {DrinksForSelectedDate[0].Abv}%",
+                    //    "OK");
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert(
-                        "Info",
-                        "No drinks found for this date",
-                        "OK");
+                    //await Application.Current.MainPage.DisplayAlert(
+                    //    "Info",
+                    //    "No drinks found for this date",
+                    //    "OK");
                 }
             }
             catch (Exception ex)

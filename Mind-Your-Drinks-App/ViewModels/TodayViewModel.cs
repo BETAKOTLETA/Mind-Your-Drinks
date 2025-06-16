@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Windows.Input;
+using Mind_Your_Drinks_App.Services;
 
 namespace Mind_Your_Drinks_App.ViewModels
 {
@@ -21,6 +22,16 @@ namespace Mind_Your_Drinks_App.ViewModels
         public ICommand DrinkSelectedCommand { get; }
         public ICommand SaveDrinkCommand { get; }
 
+
+        private const float DailyEthanolTarget = 40f;
+        private float _currentProgress;
+        public float CurrentProgress
+        {
+            get => _currentProgress;
+            set => SetField(ref _currentProgress, value);
+        }
+
+        private readonly ApiService _apiService = new(new HttpClient());
 
         private UserDrink? _selectedDrink;
         private bool _isDrinkGridVisible;
@@ -119,7 +130,7 @@ namespace Mind_Your_Drinks_App.ViewModels
             {
                 Name = drink.Name,
                 Type = drink.Type,
-                Time = DateTime.UtcNow,
+                Time = DateTime.Now,
                 Icon = drink.Icon
                 // Set other properties as needed
             };
@@ -133,18 +144,17 @@ namespace Mind_Your_Drinks_App.ViewModels
         {
             if (SelectedDrink == null || GlobalState.CurrentUser == null)
             {
-                await Application.Current.MainPage.DisplayAlert($"{SelectedDrink == null}", "Selected", "gg");
-                await Application.Current.MainPage.DisplayAlert($"{GlobalState.CurrentUser == null}", "Current", "gg");
+                await Application.Current.MainPage.DisplayAlert("Error", "No drink or user selected", "OK");
                 return;
             }
 
             try
             {
                 var success = await SaveDrinkToServer(GlobalState.CurrentUser, SelectedDrink);
-
                 if (success)
                 {
                     ResetDrinkSelection();
+                    await LoadProgressAsync(); 
                 }
             }
             catch (Exception ex)
@@ -152,6 +162,7 @@ namespace Mind_Your_Drinks_App.ViewModels
                 await HandleError(ex);
             }
         }
+
 
         private async Task<bool> SaveDrinkToServer(User user, UserDrink userDrink)
         {
@@ -205,6 +216,37 @@ namespace Mind_Your_Drinks_App.ViewModels
                 "OK"
             );
         }
+        public async Task LoadProgressAsync()
+        {
+            if (GlobalState.CurrentUser == null)
+                return;
+
+            var drinks = await _apiService.GetDrinksByDay(
+                GlobalState.CurrentUser.Name,
+                GlobalState.CurrentUser.HashPassword,
+                DateTime.Today);
+
+            float totalEthanol = 0;
+
+            //var testDrinks = new List<UserDrink> {
+            //new UserDrink { Name = "beer", VolumeInMl = 100, Abv = 3.0f }
+            //    };
+
+            foreach (var drink in drinks ?? Enumerable.Empty<UserDrink>())
+            {
+                float ethanol = drink.VolumeInMl * (drink.Abv / 100f);
+                totalEthanol += ethanol;
+
+                //await Application.Current.MainPage.DisplayAlert("Drink", $"{drink.VolumeInMl}ml @ {drink.Abv}% = {ethanol}g ethanol", "OK");
+            } 
+
+            
+            float progress = totalEthanol / DailyEthanolTarget;
+
+            CurrentProgress = Math.Min(progress, 20f);
+        }
+
+
 
         #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler? PropertyChanged;
