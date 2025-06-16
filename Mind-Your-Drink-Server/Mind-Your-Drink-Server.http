@@ -237,3 +237,14 @@ Accept: application/json
     "icon": "gg.png"
   }
 }
+
+### Get Today Drink By period Test
+POST {{Mind_Your_Drink_Server_HostAddress}}/UserDrink/GetDrinksByPeriod
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "x",
+  "Period": "today"
+}
+

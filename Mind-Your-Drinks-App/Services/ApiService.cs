@@ -154,6 +154,7 @@ namespace Mind_Your_Drinks_App.Services
 
         public async Task<IEnumerable<UserDrink>> GetTodayDrinksAsync(string name)
         {
+            await Application.Current.MainPage.DisplayAlert("I am heer","gg", "OK");
             return await GetDrinksByPeriod(name, "today");
         }
 
@@ -195,9 +196,15 @@ namespace Mind_Your_Drinks_App.Services
                     PropertyNameCaseInsensitive = true,
                     Converters = { new DateTimeConverter() }
                 };
-
-                return await response.Content.ReadFromJsonAsync<IEnumerable<UserDrink>>(options)
+                var drinks = await response.Content.ReadFromJsonAsync<IEnumerable<UserDrink>>(options)
                        ?? Enumerable.Empty<UserDrink>();
+
+                foreach (var item in drinks)
+                {
+                    await Application.Current.MainPage.DisplayAlert(item.Name, item.Time.ToString(), "Ok");
+                }
+
+                return drinks;
             }
             catch (Exception ex)
             {

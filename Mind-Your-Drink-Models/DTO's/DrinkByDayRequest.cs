@@ -8,7 +8,7 @@ namespace Mind_Your_Drink_Models.DTO_s
 {
     public class DrinkByDayRequest
     {
-        public string Name { get; set; }           // ID of the user making the request
-        public DateTime Date { get; set; }        // The specific day to get drink data for
+        public string Name { get; set; }           
+        public DateTime Date { get; set; }       
     }
 }

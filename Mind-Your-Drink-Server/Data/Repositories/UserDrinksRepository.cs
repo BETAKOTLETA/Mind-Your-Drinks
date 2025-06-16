@@ -42,8 +42,9 @@ namespace Mind_Your_Drink_Models.Data.Repositories
 
             return await _context.UserDrinks
                 .Where(d => d.UserId == userId &&
-                            d.Time >= startDate &&
-                            d.Time <= DateTime.Now)
+                            d.Time >= startDate
+                            // && d.Time <= DateTime.Now
+                            )
                 .ToListAsync();
         }
 
