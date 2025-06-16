@@ -15,7 +15,7 @@ namespace ModelTest
         {
             var user = User.CreateUser("Name", "Password");
 
-            user.Name.Should().Be("L");
+            user.Name.Should().Be("Name");
             user.HashPassword.Should().Be("e7cf3ef4f17c3999a94f2c6f612e8a888e5b1026878e4e19398b23bd38ec221a");
             user.Email.Should().BeNull();
             user.StateName.Should().Be("Active");
@@ -47,6 +47,20 @@ namespace ModelTest
             admin.UnBan(user);
 
             user.StateName.Should().Be("Active");
+        }
+
+        [Fact]
+        public void UserStateFactory_Return_ProperState()
+        {
+            var user = User.CreateUser("Name", "Password");
+
+            user.StateName = "Banned";
+
+            user.Initialize(); //Its call a userStateFactory, and based on StateName return properly UserState, very usefull when i need to get user from DB
+
+            user.StateName.Should().Be("Banned");
+
+
         }
     }
 }
